@@ -61,9 +61,7 @@
 .carole-kicker { display: flex; align-items: center; gap: 10px; margin: 0 0 17px; color: var(--carole-red); font-size: 10px; font-weight: 700; letter-spacing: .17em; line-height: 1.5; text-transform: uppercase; }
 .carole-kicker > span, .carole-caption-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
 .carole-hero .carole-kicker { color: #ffc8d2; }
-.carole-hero__title { max-width: 720px; margin: 0; font-size: clamp(42px, 5.6vw, 78px); line-height: .99; letter-spacing: -.065em; font-weight: 600; }
-.carole-hero__verified { display: inline-block; margin-left: .14em; color: #fff; vertical-align: .02em; filter: drop-shadow(0 1px 0 rgba(101,13,34,.22)); }
-.carole-about__verified { display: inline-block; margin-left: .14em; color: #0866ff; vertical-align: .02em; }
+.carole-hero__title { max-width: 100%; margin: 0; font-size: clamp(42px, 5.6vw, 78px); line-height: .99; letter-spacing: -.065em; font-weight: 600; white-space: nowrap; }
 .carole-hero__title em, .carole-section__head h2 em, .carole-booking h2 em, .carole-faq h2 em { color: var(--carole-red); font-style: normal; }
 .carole-hero__role { margin: 16px 0 0; color: #ffd2db; font-size: clamp(13px, 1.2vw, 16px); font-weight: 600; line-height: 1.6; }
 .carole-hero__lede { max-width: 570px; margin: 23px 0 0; color: rgba(255,255,255,.86); font-size: clamp(15px, 1.3vw, 18px); line-height: 1.75; }
@@ -157,10 +155,10 @@
 
 .carole-about { display: grid; grid-template-columns: minmax(240px,.82fr) minmax(0,1fr); align-items: center; gap: clamp(36px,8vw,110px); padding: clamp(72px,9vw,112px) clamp(32px,9vw,126px); background: linear-gradient(120deg, #fff0f2, #fffafa 68%, #fbe8ec); }
 .carole-about__image { width: 100%; max-width: 420px; justify-self: center; overflow: visible; border: 0; border-radius: 0; box-shadow: none; }
-.carole-about__image img { display: block; width: 100%; aspect-ratio: auto; object-fit: contain; object-position: center bottom; filter: drop-shadow(0 18px 22px rgba(101,13,34,.12)); }
+.carole-about__image img { display: block; width: 100%; aspect-ratio: auto; object-fit: contain; object-position: center bottom; filter: drop-shadow(0 18px 22px rgba(101,13,34,.12)); -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 74%, rgba(0,0,0,.72) 86%, transparent 100%); mask-image: linear-gradient(to bottom, #000 0%, #000 74%, rgba(0,0,0,.72) 86%, transparent 100%); }
 .carole-about__copy { max-width: 600px; }
 .carole-about__copy .carole-kicker { margin-bottom: 13px; }
-.carole-about__copy h2 { margin: 0; font-size: clamp(34px,4.2vw,56px); letter-spacing: -.055em; line-height: 1.06; }
+.carole-about__copy h2 { margin: 0; font-size: clamp(30px,4vw,52px); letter-spacing: -.055em; line-height: 1.06; white-space: nowrap; }
 .carole-about__role { margin: 13px 0 16px; color: var(--carole-red-deep); font-size: 12px; font-weight: 700; }
 .carole-about__copy > p:not(.carole-kicker) { max-width: 56ch; color: var(--muted); font-size: 13px; line-height: 1.8; }
 .carole-about__credentials { display: flex; flex-wrap: wrap; gap: 9px; margin: 18px 0; }
@@ -210,7 +208,7 @@
   .carole-nav { gap: 16px; }
   .carole-header__cta { padding: 0 13px; font-size: 10px; }
   .carole-hero { min-height: 570px; grid-template-columns: minmax(0,1fr) minmax(270px,.9fr); gap: 24px; padding-right: 30px; padding-left: 30px; }
-  .carole-hero__title { display: flex; align-items: center; gap: 8px; white-space: nowrap; font-size: clamp(34px,4.4vw,52px); }
+  .carole-hero__title { font-size: clamp(32px,4.4vw,52px); }
   .carole-hero__caption { right: -12px; font-size: 9px; }
   .carole-hero__portrait-wrap, .carole-hero__portrait { min-height: 390px; }
   .carole-app-feature { grid-template-columns: minmax(0,1fr) minmax(225px,.75fr); gap: 26px; padding-right: 30px; padding-left: 30px; }
@@ -232,7 +230,7 @@
   .carole-hero__portrait-frame { border-radius: 0; }
   .carole-hero__portrait { min-height: 360px; aspect-ratio: auto; border-radius: 0; transform: scale(1.2); }
   .carole-hero__caption { right: -24px; bottom: 0; padding: 10px 12px; font-size: 8px; }
-  .carole-hero__title { font-size: clamp(32px,9vw,44px); }
+  .carole-hero__title { font-size: clamp(24px,8vw,36px); }
   .carole-hero__lede { margin-top: 15px; font-size: 14px; }
   .carole-hero__actions { align-items: flex-start; flex-direction: column; gap: 15px; margin-top: 22px; }
   .carole-rating { gap: 9px; margin-top: 19px; padding: 8px 10px; }
@@ -260,7 +258,7 @@
   .carole-steps li { grid-template-columns: 35px 1fr; gap: 12px; }
   .carole-about { grid-template-columns: 1fr; gap: 28px; padding: 65px 22px; }
   .carole-about__image { width: min(75%, 285px); }
-  .carole-about__copy h2 { font-size: 39px; }
+  .carole-about__copy h2 { font-size: clamp(26px,8.5vw,36px); }
   .carole-faq { grid-template-columns: 1fr; gap: 28px; padding: 66px 22px; }
   .carole-booking { grid-template-columns: 1fr; gap: 22px; padding: 62px 22px; }
   .carole-contact-links { grid-column: auto; flex-direction: column; }
