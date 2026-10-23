@@ -114,9 +114,9 @@
 .carole-app-phone { position: relative; width: clamp(238px,26vw,300px); aspect-ratio: 9 / 18.6; padding: 9px; overflow: hidden; border: 8px solid #202126; border-radius: 42px; background: #202126; box-shadow: 0 28px 54px rgba(75,8,25,.2), inset 0 1px 0 rgba(255,255,255,.24); touch-action: pan-y; }
 .carole-app-phone__notch { position: absolute; top: 12px; left: 50%; z-index: 3; width: 29%; height: 16px; border-radius: 999px; background: #202126; transform: translateX(-50%); }
 .carole-app-phone__screen { position: relative; width: 100%; height: 100%; overflow: hidden; border-radius: 30px; background: #fff; }
-.carole-app-phone__track { --i: 0; display: flex; width: 300%; height: 100%; transform: translateX(calc(var(--i) * -33.333%)); transition: transform 600ms cubic-bezier(.34,1.4,.64,1); }
-.carole-app-phone__slide { position: relative; flex: 0 0 33.333333%; height: 100%; overflow: hidden; background: #fff; }
-.carole-app-phone__slide img { position: absolute; top: 0; display: block; width: 300%; max-width: none; height: auto; transform: translateY(-28.5%); }
+.carole-app-phone__track { --i: 0; display: flex; width: 500%; height: 100%; transform: translateX(calc(var(--i) * -20%)); transition: transform 600ms cubic-bezier(.34,1.4,.64,1); }
+.carole-app-phone__slide { position: relative; flex: 0 0 20%; height: 100%; overflow: hidden; background: #fff; }
+.carole-app-phone__slide img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .carole-app-phone__dots { position: absolute; right: 0; bottom: 9px; left: 0; z-index: 4; display: flex; justify-content: center; align-items: center; gap: 7px; }
 .carole-app-phone__dot { width: 7px; height: 7px; padding: 0; border: 0; border-radius: 999px; background: rgba(86,91,97,.42); cursor: pointer; transition: width .24s ease, background-color .24s ease; }
 .carole-app-phone__dot[aria-pressed="true"] { width: 22px; background: var(--carole-red); }
@@ -125,10 +125,11 @@
 .carole-tools-marquee__viewport { overflow: hidden; }
 .carole-tools-marquee__track { display: flex; width: max-content; animation: carole-tools-scroll 36s linear infinite; }
 .carole-tools-marquee:hover .carole-tools-marquee__track, .carole-tools-marquee:focus-within .carole-tools-marquee__track { animation-play-state: paused; }
-.carole-tools-marquee__group { display: flex; align-items: center; justify-content: space-evenly; gap: clamp(24px, 5vw, 66px); width: max-content; min-width: 100vw; min-height: 58px; margin: 0; padding: 0 clamp(28px, 6vw, 82px); box-sizing: border-box; list-style: none; }
-.carole-tools-marquee__item { display: flex; flex: 0 0 auto; align-items: center; justify-content: center; min-width: 145px; min-height: 48px; padding: 8px 18px; border: 1px solid rgba(101,13,34,.1); border-radius: 999px; background: #fffafa; color: #48515a; font-size: 14px; font-weight: 650; letter-spacing: -.02em; white-space: nowrap; }
-.carole-tools-marquee__item::before { content: ''; width: 7px; height: 7px; margin-right: 9px; flex: 0 0 auto; border-radius: 50%; background: var(--carole-red); box-shadow: 0 0 0 4px rgba(215,25,63,.09); }
-.carole-tools-marquee__item img { display: block; width: 118px; height: 32px; object-fit: contain; }
+.carole-tools-marquee__group { display: grid; flex: 0 0 100vw; grid-template-columns: repeat(5, minmax(0,1fr)); align-items: center; gap: clamp(8px, 2.5vw, 30px); width: 100vw; min-height: 74px; margin: 0; padding: 0 clamp(20px, 6vw, 82px); box-sizing: border-box; list-style: none; }
+.carole-tools-marquee__item { display: flex; min-width: 0; align-items: center; justify-content: center; flex-direction: column; gap: 7px; color: #48515a; font-size: 12px; font-weight: 650; letter-spacing: -.02em; white-space: nowrap; }
+.carole-tools-marquee__logo { display: block; width: 34px; height: 34px; object-fit: contain; }
+.carole-tools-marquee__logo--pruforce { width: 78px; }
+.carole-tools-marquee__logo--calendly { width: 32px; height: 32px; }
 @keyframes carole-tools-scroll { to { transform: translateX(-50%); } }
 .carole-planning { background: var(--paper); }
 .carole-section__head { max-width: 760px; margin-bottom: 39px; }
@@ -246,9 +247,10 @@
   .carole-app-phone { width: min(76vw, 280px); }
   .carole-app-feature__visual { padding-top: 3px; }
   .carole-tools-marquee { padding: 15px 0 19px; }
-  .carole-tools-marquee__group { min-height: 50px; gap: 14px; padding-inline: 18px; }
-  .carole-tools-marquee__item { min-width: 128px; min-height: 42px; padding: 7px 14px; font-size: 12px; }
-  .carole-tools-marquee__item img { width: 98px; height: 28px; }
+  .carole-tools-marquee__group { min-height: 68px; gap: 6px; padding-inline: 16px; }
+  .carole-tools-marquee__item { gap: 6px; font-size: 9px; }
+  .carole-tools-marquee__logo { width: 29px; height: 29px; }
+  .carole-tools-marquee__logo--pruforce { width: 64px; }
   .carole-section__head { margin-bottom: 27px; }
   .carole-section__head h2, .carole-booking h2, .carole-faq h2 { font-size: clamp(32px,9vw,45px); }
   .carole-topic-grid { grid-template-columns: 1fr; gap: 10px; }
