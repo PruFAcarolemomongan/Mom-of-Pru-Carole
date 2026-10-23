@@ -100,11 +100,11 @@
 .carole-app-feature__copy .carole-kicker { margin-bottom: 15px; }
 .carole-app-feature__copy h2 { max-width: 590px; margin: 0; color: var(--navy); font-size: clamp(38px,5vw,66px); font-weight: 600; letter-spacing: -.06em; line-height: 1.02; }
 .carole-app-feature__copy > p:not(.carole-kicker) { max-width: 550px; margin: 19px 0 0; color: var(--muted); font-size: clamp(14px,1.3vw,17px); line-height: 1.7; }
-.carole-app-feature__stores { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 27px; }
+.carole-app-feature__stores { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; width: min(100%, 500px); margin-top: 27px; }
 .carole-store-badge { display: block; flex: 0 1 auto; max-width: 100%; text-decoration: none; transition: transform .2s ease, filter .2s ease; }
 .carole-store-badge:hover { transform: translateY(-2px); filter: drop-shadow(0 8px 12px rgba(22,20,23,.16)); }
 .carole-store-badge:focus-visible, .carole-app-phone:focus-visible { outline: 3px solid #ff8ea3; outline-offset: 4px; }
-.carole-store-badge img { display: block; width: auto; height: 72px; max-width: 100%; object-fit: contain; }
+.carole-store-badge img { display: block; width: 100%; aspect-ratio: 3.2 / 1; object-fit: fill; }
 .carole-app-feature__visual { display: flex; justify-content: center; min-width: 0; }
 .carole-app-phone { position: relative; width: clamp(238px,26vw,300px); aspect-ratio: 9 / 18.6; padding: 9px; overflow: hidden; border: 8px solid #202126; border-radius: 42px; background: #202126; box-shadow: 0 28px 54px rgba(75,8,25,.2), inset 0 1px 0 rgba(255,255,255,.24); touch-action: pan-y; }
 .carole-app-phone__notch { position: absolute; top: 12px; left: 50%; z-index: 3; width: 29%; height: 16px; border-radius: 999px; background: #202126; transform: translateX(-50%); }
