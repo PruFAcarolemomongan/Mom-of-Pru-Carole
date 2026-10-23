@@ -46,8 +46,8 @@ export type Profile = {
 }
 
 export const profile: Profile = {
-  name: 'Your Name',
-  firstName: 'Your Name',
+  name: 'Mom of Pru - Carole',
+  firstName: 'Carole',
   handle: '@yourhandle',
   role: 'PLACEHOLDER - your title',
   avatarSrc: '/avatar.svg',
@@ -62,7 +62,7 @@ export const profile: Profile = {
   ],
   // The intro types this line, then flies it into the Home headline.
   // Keep it short: two halves, 5-8 words total.
-  displayName: { line1: 'Your headline here.', line2: 'Keep it short.' },
+  displayName: { line1: 'Mom of Pru', line2: 'Carole' },
   hero: {
     body: 'PLACEHOLDER - one line on what you do and who you do it for.',
     portraitSrc: '/avatar.svg',
