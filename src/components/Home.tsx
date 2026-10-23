@@ -1,8 +1,43 @@
 import { useEffect, useRef } from 'react'
+import type { MouseEvent } from 'react'
 import { ArrowUpRight, Heart, ShieldCheck, GraduationCap, SealCheck, CheckCircle } from '@/components/slab'
 import { profile } from '@/data/profile'
 import { useScrollReveal } from '@/hooks/useScrollReveal'
 import '@/styles/home-carole.css'
+
+declare global {
+  interface Window {
+    Calendly?: { initPopupWidget: (options: { url: string }) => void }
+  }
+}
+
+let calendlyWidgetPromise: Promise<void> | null = null
+
+function openBooking(event: MouseEvent<HTMLAnchorElement>) {
+  event.preventDefault()
+  if (window.Calendly) {
+    window.Calendly.initPopupWidget({ url: profile.bookingUrl })
+    return
+  }
+
+  if (!calendlyWidgetPromise) {
+    calendlyWidgetPromise = new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = 'https://assets.calendly.com/assets/external/widget.js'
+      script.async = true
+      script.onload = () => resolve()
+      script.onerror = () => {
+        calendlyWidgetPromise = null
+        reject(new Error('Calendly widget failed to load'))
+      }
+      document.head.appendChild(script)
+    })
+  }
+
+  void calendlyWidgetPromise
+    .then(() => window.Calendly?.initPopupWidget({ url: profile.bookingUrl }))
+    .catch(() => { window.location.href = profile.bookingUrl })
+}
 
 const planningTopics = [
   {
@@ -143,7 +178,7 @@ export default function Home() {
             <a href="#planning">Planning</a>
             <a href="#faq">FAQs</a>
           </nav>
-          <a className="carole-header__cta" href={profile.bookingUrl} target="_blank" rel="noopener noreferrer">
+          <a className="carole-header__cta" href={profile.bookingUrl} onClick={openBooking}>
             Contact Carole <ArrowUpRight size={16} weight="bold" aria-hidden="true" />
           </a>
         </header>
@@ -157,7 +192,7 @@ export default function Home() {
             <p className="carole-hero__role">{profile.role}</p>
             <p className="carole-hero__lede">{profile.hero.body}</p>
             <div className="carole-hero__actions">
-              <a className="carole-button" href={profile.bookingUrl} target="_blank" rel="noopener noreferrer">
+              <a className="carole-button" href={profile.bookingUrl} onClick={openBooking}>
                 Book an online appointment <ArrowUpRight size={18} weight="bold" aria-hidden="true" />
               </a>
               <a className="carole-text-link" href="#planning">Explore planning topics</a>
@@ -193,7 +228,7 @@ export default function Home() {
                 <span className="carole-topic__icon"><Icon size={23} weight="duotone" aria-hidden="true" /></span>
                 <h3>{title}</h3>
                 <p>{body}</p>
-                <a href={profile.bookingUrl} target="_blank" rel="noopener noreferrer" aria-label={`Talk with Carole about ${title}`}>Let’s talk <ArrowUpRight size={15} aria-hidden="true" /></a>
+                <a href={profile.bookingUrl} onClick={openBooking} aria-label={`Talk with Carole about ${title}`}>Let’s talk <ArrowUpRight size={15} aria-hidden="true" /></a>
               </article>
             ))}
           </div>
@@ -227,7 +262,7 @@ export default function Home() {
               <span>Licensed Professional Teacher (LPT)</span>
               <span>Certified Financial Coach</span>
             </div>
-            <a className="carole-text-link" href={profile.bookingUrl} target="_blank" rel="noopener noreferrer">Get to know Carole <ArrowUpRight size={16} aria-hidden="true" /></a>
+            <a className="carole-text-link" href={profile.bookingUrl} onClick={openBooking}>Get to know Carole <ArrowUpRight size={16} aria-hidden="true" /></a>
           </div>
         </section>
 
@@ -253,7 +288,7 @@ export default function Home() {
             <h2 id="book-title">Let’s talk about <em>what matters to you.</em></h2>
             <p>Choose an online appointment time that works for you. Carole will be ready to listen and learn about your goals.</p>
           </div>
-          <a className="carole-button carole-button--light" href={profile.bookingUrl} target="_blank" rel="noopener noreferrer">
+          <a className="carole-button carole-button--light" href={profile.bookingUrl} onClick={openBooking}>
             Schedule an appointment <ArrowUpRight size={18} weight="bold" aria-hidden="true" />
           </a>
           <div className="carole-contact-links" aria-label="Contact Carole">
@@ -264,13 +299,25 @@ export default function Home() {
         </section>
       </main>
 
+      <section className="carole-brand-signature" aria-label="Pru Life UK brand messages">
+        <p className="carole-brand-signature__tagline" aria-label="For Every Life, For Every Future">
+          <span>For Every <em>Life,</em></span>
+          <span>For Every <em>Future</em></span>
+        </p>
+        <div className="carole-brand-signature__anniversary" aria-label="175 Years Celebrating Life">
+          <div className="carole-brand-signature__years"><strong>175</strong><b>YEARS</b></div>
+          <svg className="carole-brand-signature__wave" viewBox="0 0 210 24" aria-hidden="true"><path d="M4 17 C40 18 57 9 83 6 C115 2 121 21 151 17 C174 14 187 6 205 7" /></svg>
+          <span>Celebrating Life</span>
+        </div>
+      </section>
+
       <footer className="carole-footer">
         <a className="carole-brand carole-brand--footer" href="#top" aria-label="Mom of Pru, Carole home">
           <span className="carole-brand__mark">C</span>
           <span><b>Mom of Pru</b><small>Carole Momongan</small></span>
         </a>
         <span>© {new Date().getFullYear()} Carole Momongan · Associate Unit Manager</span>
-        <a href={profile.bookingUrl} target="_blank" rel="noopener noreferrer">Book an appointment <ArrowUpRight size={15} aria-hidden="true" /></a>
+        <a href={profile.bookingUrl} onClick={openBooking}>Book an appointment <ArrowUpRight size={15} aria-hidden="true" /></a>
       </footer>
     </div>
   )
