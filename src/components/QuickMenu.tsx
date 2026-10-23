@@ -44,7 +44,7 @@ export default function QuickMenu({ className = '' }: { className?: string }) {
 
   const openAccessibility = () => {
     setOpen(false)
-    window.dispatchEvent(new CustomEvent(A11Y_OPEN_EVENT, { detail: buttonRef.current }))
+    window.dispatchEvent(new CustomEvent(A11Y_OPEN_EVENT, { detail: document.activeElement as HTMLElement }))
   }
 
   return (
@@ -61,7 +61,7 @@ export default function QuickMenu({ className = '' }: { className?: string }) {
         <DotsThree size={22} weight="bold" aria-hidden="true" />
       </button>
 
-      <div id={panelId} className={`qmenu__panel${open ? ' is-open' : ''}`} inert={!open || undefined}>
+      <div id={panelId} className={`qmenu__panel${open || className.includes('qmenu--inline') ? ' is-open' : ''}`} inert={(!open && !className.includes('qmenu--inline')) || undefined}>
         <button
           type="button"
           role="switch"
