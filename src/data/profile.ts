@@ -70,7 +70,7 @@ export const profile: Profile = {
   displayName: { line1: 'Carole', line2: 'Momongan' },
   hero: {
     body: 'I help families prepare today, protect what matters most, and build a more financially secure future.',
-    portraitSrc: '/carole-main.jpg',
+    portraitSrc: '/carole-hero-cutout.png',
     portraitAlt: 'Carole Momongan, Associate Unit Manager',
   },
   socials: [
