@@ -75,5 +75,6 @@ export const profile: Profile = {
   },
   socials: [
     { label: 'Carole on Facebook', href: 'https://www.facebook.com/profile.php?id=61577227094531', iconPath: '/icons/facebook.svg' },
+    { label: 'Carole on LinkedIn', href: 'https://www.linkedin.com/in/carolemomongan/', iconPath: '/icons/linkedin.svg' },
   ],
 }
