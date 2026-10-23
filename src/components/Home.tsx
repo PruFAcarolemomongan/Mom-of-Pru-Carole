@@ -79,50 +79,29 @@ const appScreens = [
 ]
 
 function WorkToolLogo({ name }: { name: string }) {
-  if (name === 'PRUforce') return <img className="carole-tools-marquee__logo carole-tools-marquee__logo--pruforce" src="/pruforce.png" alt="" loading="lazy" />
-
-  if (name === 'Google Sheets') return (
-    <svg className="carole-tools-marquee__logo" viewBox="0 0 40 40" aria-hidden="true">
-      <path fill="#188038" d="M10 3h14l8 8v25a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" />
-      <path fill="#34A853" d="M24 3v8h8Z" />
-      <path fill="#fff" d="M13 16h14v13H13z" />
-      <path fill="#188038" d="M18.8 16h2.1v13h-2.1zM13 21.5h14v2.1H13z" />
-    </svg>
-  )
-
   if (name === 'Zoom') return (
-    <svg className="carole-tools-marquee__logo" viewBox="0 0 40 40" aria-hidden="true">
-      <circle cx="20" cy="20" r="18" fill="#2D8CFF" />
-      <path fill="#fff" d="M8 14.5h13a3 3 0 0 1 3 3v8H11a3 3 0 0 1-3-3Zm17 4 7-4v14l-7-4Z" />
+    <svg className="carole-tools-marquee__logo carole-tools-marquee__logo--zoom" viewBox="0 0 160 40" aria-label="Zoom" role="img">
+      <circle cx="20" cy="20" r="19" fill="#2D8CFF" />
+      <path fill="#fff" d="M10 14h12a3 3 0 0 1 3 3v8H13a3 3 0 0 1-3-3Zm16 4 8-4v14l-8-4Z" />
+      <text x="45" y="30" fill="#2D8CFF" fontFamily="Arial, sans-serif" fontSize="29" fontWeight="500" letterSpacing="-1.2">zoom</text>
     </svg>
   )
 
-  if (name === 'Google Meet') return (
-    <svg className="carole-tools-marquee__logo" viewBox="0 0 40 40" aria-hidden="true">
-      <path fill="#00832D" d="M5 12a3 3 0 0 1 3-3h4l4 5v12l-4 5H8a3 3 0 0 1-3-3Z" />
-      <path fill="#0066DA" d="M16 14h10v12H16z" />
-      <path fill="#00AC47" d="M12 9h12l-4 6H12z" />
-      <path fill="#EA4335" d="m26 16 9-6v20l-9-6Z" />
-      <path fill="#2684FC" d="M12 26h12l-4 6H12z" />
-      <path fill="#FFBA00" d="M16 14h4v12h-4z" />
-    </svg>
-  )
-
-  return (
-    <svg className="carole-tools-marquee__logo carole-tools-marquee__logo--calendly" viewBox="0 0 40 40" aria-hidden="true">
-      <rect x="2" y="2" width="36" height="36" rx="11" fill="#006BFF" />
-      <path fill="#fff" d="M21.7 10.5a9.5 9.5 0 1 0 0 19 9.5 9.5 0 0 0 0-19Zm0 4.2a5.3 5.3 0 1 1 0 10.6 5.3 5.3 0 0 1 0-10.6Z" />
-    </svg>
-  )
+  const logos: Record<string, string> = {
+    'Google Sheets': '/tools-google-sheets.png',
+    PRUforce: '/pruforce.png',
+    'Google Meet': '/tools-google-meet.png',
+    Calendly: '/tools-calendly.png',
+  }
+  return <img className={`carole-tools-marquee__logo carole-tools-marquee__logo--${name.toLowerCase().replaceAll(' ', '-')}`} src={logos[name]} alt={name} loading="lazy" />
 }
 
 function ToolGroup({ duplicate = false }: { duplicate?: boolean }) {
   return (
     <ul className="carole-tools-marquee__group" aria-hidden={duplicate || undefined}>
       {workTools.map((name) => (
-        <li className="carole-tools-marquee__item" key={name} aria-label={duplicate ? undefined : name}>
+        <li className="carole-tools-marquee__item" key={name}>
           <WorkToolLogo name={name} />
-          <span>{name}</span>
         </li>
       ))}
     </ul>
@@ -201,13 +180,11 @@ function PruAppFeature() {
         <h2 id="carole-app-title">Your policy, closer at hand.</h2>
         <p>View your policy, make payments, and check fund updates in one app.</p>
         <div className="carole-app-feature__stores" aria-label="Get the Pru Life UK app">
-          <a className="carole-store-badge" href="https://apps.apple.com/ph/app/pru-life-uk/id6798558656" target="_blank" rel="noopener noreferrer">
-            <svg className="carole-store-badge__apple" viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 12.34c.02 2.15 1.89 2.86 1.91 2.87-.02.05-.3 1.04-.99 2.06-.59.88-1.21 1.76-2.18 1.78-.95.02-1.25-.57-2.33-.57-1.08 0-1.42.55-2.32.59-.93.03-1.64-.95-2.23-1.83-1.21-1.8-2.14-5.08-.9-7.29.62-1.1 1.72-1.8 2.91-1.82.91-.02 1.77.62 2.33.62.56 0 1.6-.77 2.69-.66.46.02 1.74.19 2.56 1.42-.07.05-1.53.89-1.51 2.83ZM14.62 5.87c.49-.59.82-1.4.73-2.22-.71.03-1.57.47-2.08 1.05-.46.52-.86 1.34-.75 2.13.79.06 1.61-.4 2.1-.96Z" /></svg>
-            <span><small>Download on the</small><strong>App Store</strong></span>
+          <a className="carole-store-badge" href="https://apps.apple.com/ph/app/pru-life-uk/id6798558656" target="_blank" rel="noopener noreferrer" aria-label="Download Pru Life UK on the App Store">
+            <img src="/app-store-badge.png" alt="Download on the App Store" loading="lazy" />
           </a>
-          <a className="carole-store-badge" href="https://play.google.com/store/apps/details?id=com.prudential.pruservices.pluk" target="_blank" rel="noopener noreferrer">
-            <svg className="carole-store-badge__play" viewBox="0 0 24 24" aria-hidden="true"><path fill="#34d399" d="M3.4 2.7a2 2 0 0 0-.4 1.2v16.2a2 2 0 0 0 .4 1.2l9.1-9.3z"/><path fill="#60a5fa" d="m3.4 2.7 10.4 8.1-2.8 2.8z"/><path fill="#fbbf24" d="m13.8 10.8 6.6 4.2c1 .6 1 1.4 0 2l-6.5 4.1-5-5z"/><path fill="#f87171" d="m8.9 16.1 4.9-5.3-1.7-1.4L3.4 21.3z"/></svg>
-            <span><small>Get it on</small><strong>Google Play</strong></span>
+          <a className="carole-store-badge" href="https://play.google.com/store/apps/details?id=com.prudential.pruservices.pluk" target="_blank" rel="noopener noreferrer" aria-label="Get Pru Life UK on Google Play">
+            <img src="/google-play-store-badge.png" alt="Get it on Google Play" loading="lazy" />
           </a>
         </div>
       </div>
@@ -360,7 +337,6 @@ export default function Home() {
               <a className="carole-button" href={profile.bookingUrl} onClick={openBooking}>
                 Book an online appointment <ArrowUpRight size={18} weight="bold" aria-hidden="true" />
               </a>
-              <a className="carole-text-link" href="#planning">Explore planning topics</a>
             </div>
             <CaroleRating />
           </div>
@@ -415,7 +391,7 @@ export default function Home() {
         </section>
 
         <section className="carole-about" id="about" aria-labelledby="about-title">
-          <div className="carole-about__image"><img src={profile.aboutPortraitSrc} alt="Carole Momongan holding a red folder" loading="lazy" /></div>
+          <div className="carole-about__image"><img src={profile.aboutPortraitSrc} alt="Carole Momongan with arms crossed" loading="lazy" /></div>
           <div className="carole-about__copy">
             <p className="carole-kicker">Meet your adviser</p>
             <h2 id="about-title">Carole Momongan</h2>
