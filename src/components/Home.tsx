@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import type { MouseEvent } from 'react'
 import { ArrowUpRight, Heart, ShieldCheck, GraduationCap, CheckCircle } from '@/components/slab'
-import { profile } from '@/data/profile'
+import { profile } from '@/data/profile'; import QuickMenu from './QuickMenu'
 import { useScrollReveal } from '@/hooks/useScrollReveal'
 import '@/styles/home-carole.css'
 
@@ -314,7 +314,7 @@ export default function Home() {
             <span className="carole-brand__mark">C</span>
             <span><b>Mom of Pru</b><small>Carole Momongan</small></span>
           </a>
-          <nav className="carole-nav" aria-label="Main navigation">
+          <div className="carole-header__tools"><QuickMenu /></div><nav className="carole-nav" aria-label="Main navigation">
             <a href="#top">Home</a>
             <a href="#about">About</a>
             <a href="#planning">Planning</a> <a href="#careers">Careers</a>
