@@ -161,7 +161,7 @@
 .carole-about__credentials span { padding: 8px 11px; border: 1px solid rgba(142,16,43,.16); border-radius: 999px; background: rgba(255,255,255,.68); color: var(--carole-red-deep); font-size: 10px; font-weight: 600; }
 .carole-about__copy .carole-text-link { margin-top: 7px; }
 
-.carole-faq { display: grid; grid-template-columns: minmax(220px,.75fr) minmax(0,1.25fr); gap: clamp(30px,7vw,90px); padding: clamp(72px,8vw,104px) clamp(32px,7vw,100px); background: var(--paper); }
+.carole-careers { display:flex; align-items:center; justify-content:space-between; gap:34px; padding:clamp(56px,7vw,88px) clamp(30px,7vw,100px); background:linear-gradient(118deg,#760e26 0%,#a71334 58%,#d7193f 100%); color:#fff; } .carole-careers__copy { max-width:670px; } .carole-careers .carole-kicker { margin:0 0 12px; color:#ffc6d1; } .carole-careers h2 { max-width:640px; margin:0; font-size:clamp(32px,4.4vw,56px); font-weight:600; letter-spacing:-.055em; line-height:1.06; } .carole-careers__copy > p:last-child { max-width:56ch; margin:15px 0 0; color:rgba(255,255,255,.82); font-size:13px; line-height:1.75; } .carole-careers .carole-button { flex:0 0 auto; } @media(max-width:640px){.carole-careers{align-items:flex-start;flex-direction:column;gap:24px;padding:62px 22px;}} .carole-faq { display: grid; grid-template-columns: minmax(220px,.75fr) minmax(0,1.25fr); gap: clamp(30px,7vw,90px); padding: clamp(72px,8vw,104px) clamp(32px,7vw,100px); background: var(--paper); }
 .carole-faq__intro > p:last-child { max-width: 38ch; margin-top: 15px; color: var(--muted); font-size: 13px; line-height: 1.7; }
 .carole-faq__list { border-top: 1px solid var(--line); }
 .carole-faq__item { border-bottom: 1px solid var(--line); }
