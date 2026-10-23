@@ -317,7 +317,7 @@ export default function Home() {
           <nav className="carole-nav" aria-label="Main navigation">
             <a href="#top">Home</a>
             <a href="#about">About</a>
-            <a href="#planning">Planning</a>
+            <a href="#planning">Planning</a> <a href="#careers">Careers</a>
             <a href="#faq">FAQs</a>
           </nav>
           <a className="carole-header__cta" href={profile.bookingUrl} onClick={openBooking}>
@@ -405,7 +405,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="carole-faq" id="faq" aria-labelledby="faq-title">
+<section className="carole-careers" id="careers" aria-labelledby="careers-title"><div className="carole-careers__copy"><p className="carole-kicker">Grow with us</p><h2 id="careers-title">Join us and be part of my team.</h2><p>Interested in becoming a financial adviser? Reach out to Carole to learn about the opportunity and next steps.</p></div><a className="carole-button carole-button--light" href={`mailto:${profile.email}?subject=${encodeURIComponent("Joining Carole's team")}`}>Ask Carole about careers <ArrowUpRight size={18} weight="bold" aria-hidden="true" /></a></section> <section className="carole-faq" id="faq" aria-labelledby="faq-title">
           <div className="carole-faq__intro">
             <p className="carole-kicker">Good to know</p>
             <h2 id="faq-title">Questions before <em>we talk?</em></h2>
