@@ -340,9 +340,7 @@
 .carole-timeline__list::after { background: linear-gradient(180deg, #e31e3c, #ff8493); transform: scaleY(0); transform-origin: top; transition: transform 3s cubic-bezier(.32,.72,0,1); }
 .carole-timeline__list.is-visible::after { transform: scaleY(1); }
 .carole-timeline__item { position: relative; outline: none; opacity: 0; transform: translateX(14px); transition: opacity 520ms cubic-bezier(.32,.72,0,1), transform 520ms cubic-bezier(.32,.72,0,1); }
-.carole-timeline__item:nth-child(1), .carole-timeline__item:nth-child(1)::before { transition-delay: 0ms; }
-.carole-timeline__item:nth-child(2), .carole-timeline__item:nth-child(2)::before { transition-delay: 760ms; }
-.carole-timeline__item:nth-child(3), .carole-timeline__item:nth-child(3)::before { transition-delay: 1520ms; }
+.carole-timeline__item, .carole-timeline__item::before { transition-delay: calc(var(--timeline-index, 0) * 760ms); }
 .carole-timeline__item::before { position: absolute; top: 18px; left: -26px; z-index: 1; width: 14px; height: 14px; border: 2px solid #e31e3c; border-radius: 50%; background: #fff; box-shadow: 0 0 0 3px rgba(227,30,60,.12); content: ""; transform: scale(0); transition: transform 560ms cubic-bezier(.2,1.5,.45,1); }
 .carole-timeline__list.is-visible .carole-timeline__item { opacity: 1; transform: translateX(0); }
 .carole-timeline__list.is-visible .carole-timeline__item::before { transform: scale(1); }
@@ -351,8 +349,7 @@
 .carole-timeline__card time { display: block; margin-bottom: 5px; color: #8a6870; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
 .carole-timeline__card h4 { margin: 0; color: var(--ink, #102144); font-size: .96rem; font-weight: 760; }
 .carole-travel { margin: 0 0 24px; }
-.carole-travel ul { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
-.carole-travel li { padding: 7px 11px; border: 1px solid rgba(168,20,50,.16); border-radius: 999px; color: #8f1733; font-size: .78rem; line-height: 1.25; }
+.carole-travel__list { gap: 12px; }
 .carole-brand-signature { display: block; overflow: hidden; width: 100%; aspect-ratio: 2148 / 596; min-height: 0; padding: 0; background: #fff url('/codex-clipboard-a5384aa9-5ae4-43f0-84b4-07c9d9584fa6.png') center / contain no-repeat; }
 .carole-brand-signature > * { display: none !important; }
 .rail__theme { display: none !important; }
