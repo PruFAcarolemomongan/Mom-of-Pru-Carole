@@ -21,7 +21,16 @@ export const RAIL_LINKS = [
   { label: 'About Carole', to: '#about', Icon: UserIcon },
 ] as const
 
-export default function Rail() {
+type RailProps = {
+  sidebarVisible?: boolean
+  sidebarPeeking?: boolean
+  onHide?: () => void
+  onDock?: () => void
+  onPointerEnter?: () => void
+  onPointerLeave?: () => void
+}
+
+export default function Rail({ sidebarVisible = true, sidebarPeeking = false, onHide = () => {}, onDock = () => {}, onPointerEnter = () => {}, onPointerLeave = () => {} }: RailProps) {
   const [theme, setThemeState] = useState<Theme>('light')
 
   // The pre-paint script owns the real value; read it once mounted so the
@@ -29,8 +38,14 @@ export default function Rail() {
   useEffect(() => setThemeState(getTheme()), [])
 
   return (
-    <aside className="rail" aria-label="Profile and site navigation">
+    <aside id="profile-rail" className="rail" aria-label="Profile and site navigation" aria-hidden={!sidebarVisible} inert={!sidebarVisible} onPointerEnter={onPointerEnter} onPointerLeave={onPointerLeave}>
       <div className="rail__inner">
+        <div className="rail__header">
+          <span className="rail__header-label">Your workspace</span>
+          <button type="button" className="rail__hide" aria-label={sidebarPeeking ? "Keep sidebar open" : "Hide sidebar"} aria-controls="profile-rail" aria-expanded={sidebarVisible} onClick={sidebarPeeking ? onDock : onHide}>
+            <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2" /><path d="M9 4v16M15 9l-3 3 3 3" /></svg>
+          </button>
+        </div>
         <span className="rail__avatar">
           <img
             src={profile.avatarSrc}
