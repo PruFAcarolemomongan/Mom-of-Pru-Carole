@@ -202,11 +202,11 @@ function PruAppFeature() {
         <p>View your policy, make payments, and check fund updates in one app.</p>
         <div className="carole-app-feature__stores" aria-label="Get the Pru Life UK app">
           <a className="carole-store-badge" href="https://apps.apple.com/ph/app/pru-life-uk/id6798558656" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 17v3h14v-3" /></svg>
+            <svg className="carole-store-badge__apple" viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 12.34c.02 2.15 1.89 2.86 1.91 2.87-.02.05-.3 1.04-.99 2.06-.59.88-1.21 1.76-2.18 1.78-.95.02-1.25-.57-2.33-.57-1.08 0-1.42.55-2.32.59-.93.03-1.64-.95-2.23-1.83-1.21-1.8-2.14-5.08-.9-7.29.62-1.1 1.72-1.8 2.91-1.82.91-.02 1.77.62 2.33.62.56 0 1.6-.77 2.69-.66.46.02 1.74.19 2.56 1.42-.07.05-1.53.89-1.51 2.83ZM14.62 5.87c.49-.59.82-1.4.73-2.22-.71.03-1.57.47-2.08 1.05-.46.52-.86 1.34-.75 2.13.79.06 1.61-.4 2.1-.96Z" /></svg>
             <span><small>Download on the</small><strong>App Store</strong></span>
           </a>
           <a className="carole-store-badge" href="https://play.google.com/store/apps/details?id=com.prudential.pruservices.pluk" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 17v3h14v-3" /></svg>
+            <svg className="carole-store-badge__play" viewBox="0 0 24 24" aria-hidden="true"><path fill="#34d399" d="M3.4 2.7a2 2 0 0 0-.4 1.2v16.2a2 2 0 0 0 .4 1.2l9.1-9.3z"/><path fill="#60a5fa" d="m3.4 2.7 10.4 8.1-2.8 2.8z"/><path fill="#fbbf24" d="m13.8 10.8 6.6 4.2c1 .6 1 1.4 0 2l-6.5 4.1-5-5z"/><path fill="#f87171" d="m8.9 16.1 4.9-5.3-1.7-1.4L3.4 21.3z"/></svg>
             <span><small>Get it on</small><strong>Google Play</strong></span>
           </a>
         </div>
