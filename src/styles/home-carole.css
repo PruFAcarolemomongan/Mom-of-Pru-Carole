@@ -1,3 +1,8 @@
+
+
+.carole-rail-book { display: block; margin-top: 12px; padding: 12px 14px; border-radius: 999px; background: var(--carole-rose); color: #fff !important; font-size: 12px; font-weight: 700; text-align: center; text-decoration: none; }
+.carole-rail-book:hover { background: var(--carole-rose-dark); }
+@media (max-width: 1099px) { .tabbar { grid-template-columns: repeat(4, 1fr); } }
 .shell__panel[data-fixed='true'] { overflow-y: auto !important; }
 .carole-page { --rose:#9b3150; --rose-dark:#79213d; --blush:#f6e8e8; color:var(--navy); background:var(--cream); overflow:hidden; }
 .carole-hero { min-height:min(850px,100svh); position:relative; display:grid; grid-template-columns:minmax(0,1.05fr) minmax(340px,.78fr); align-items:center; gap:clamp(40px,7vw,112px); padding:clamp(64px,10vh,116px) clamp(32px,8vw,120px) 92px; isolation:isolate; }
