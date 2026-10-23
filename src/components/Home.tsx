@@ -71,6 +71,7 @@ const faqs = [
 ]
 
 const workTools = ['Google Sheets', 'Zoom', 'PRUforce', 'Google Meet', 'Calendly']
+const travelDestinations = ['Bangkok, Thailand', 'Auckland, New Zealand', 'Bali, Indonesia', 'Fukuoka, Japan', 'Hanoi, Vietnam', 'Istanbul, Turkey', 'Nagano, Japan', 'Tokyo, Japan']
 const appScreens = [
   { name: 'Policy overview', src: '/pru-app-home.png' },
   { name: 'App services', src: '/pru-app-features.png' },
@@ -307,10 +308,9 @@ function CaroleRating() {
 export default function Home() {
   useScrollReveal()
   const timelineRef = useRef<HTMLOListElement>(null)
-  const travelTimelineRef = useRef<HTMLOListElement>(null)
 
   useEffect(() => {
-    const timelines = [timelineRef.current, travelTimelineRef.current].filter(
+    const timelines = [timelineRef.current].filter(
       (timeline): timeline is HTMLOListElement => timeline !== null,
     )
     if (!timelines.length) return
@@ -426,14 +426,19 @@ export default function Home() {
                 <li className="carole-timeline__item" style={{ '--timeline-index': 2 } as CSSProperties} tabIndex={0}><article className="carole-timeline__card"><time dateTime="2026">2026</time><h4>Senior Achiever</h4></article></li>
               </ol>
             </section>
-            <section className="carole-travel carole-timeline" aria-labelledby="carole-travel-title">
+            <section className="carole-travel" aria-labelledby="carole-travel-title">
               <h3 className="carole-timeline__heading" id="carole-travel-title">Travel qualifications</h3>
-              <ol className="carole-timeline__list carole-travel__list" ref={travelTimelineRef} aria-label="Travel qualifications">
-                {['Bangkok, Thailand', 'Auckland, New Zealand', 'Bali, Indonesia', 'Fukuoka, Japan', 'Hanoi, Vietnam', 'Istanbul, Turkey', 'Nagano, Japan', 'Tokyo, Japan'].map((destination, index) => (
-                  <li className="carole-timeline__item" key={destination} style={{ '--timeline-index': index } as CSSProperties} tabIndex={0}>
-                    <article className="carole-timeline__card"><time>Travel qualification</time><h4>{destination}</h4></article>
-                  </li>
-                ))}
+              <div className="carole-travel__cube-scene" aria-hidden="true">
+                <div className="carole-travel__cube">
+                  {travelDestinations.map((destination, index) => (
+                    <div className="carole-travel__face" key={destination} style={{ '--face-index': index } as CSSProperties}>
+                      <span>{destination}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <ol className="carole-travel__sr-list" aria-label="Travel qualifications">
+                {travelDestinations.map((destination) => <li key={destination}>{destination}</li>)}
               </ol>
             </section>
             <p>Carole brings her experience as a Licensed Professional Teacher and Certified Financial Coach to conversations about family protection and financial goals.</p>
