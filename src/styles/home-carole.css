@@ -124,8 +124,8 @@
 .carole-steps p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.65; }
 
 .carole-about { display: grid; grid-template-columns: minmax(240px,.82fr) minmax(0,1fr); align-items: center; gap: clamp(36px,8vw,110px); padding: clamp(72px,9vw,112px) clamp(32px,9vw,126px); background: linear-gradient(120deg, #fff0f2, #fffafa 68%, #fbe8ec); }
-.carole-about__image { max-width: 350px; justify-self: center; overflow: hidden; border: 8px solid rgba(255,255,255,.8); border-radius: 18px; box-shadow: 0 23px 65px rgba(101,13,34,.15); }
-.carole-about__image img { display: block; width: 100%; aspect-ratio: .8; object-fit: cover; object-position: 50% 24%; }
+.carole-about__image { width: 100%; max-width: 420px; justify-self: center; overflow: visible; border: 0; border-radius: 0; box-shadow: none; }
+.carole-about__image img { display: block; width: 100%; aspect-ratio: auto; object-fit: contain; object-position: center bottom; filter: drop-shadow(0 18px 22px rgba(101,13,34,.12)); }
 .carole-about__copy { max-width: 600px; }
 .carole-about__copy .carole-kicker { margin-bottom: 13px; }
 .carole-about__copy h2 { margin: 0; font-size: clamp(34px,4.2vw,56px); letter-spacing: -.055em; line-height: 1.06; }
