@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import type { MouseEvent } from 'react'
+import type { CSSProperties, MouseEvent } from 'react'
 import { ArrowUpRight, Heart, ShieldCheck, GraduationCap, CheckCircle } from '@/components/slab'
 import { profile } from '@/data/profile'
 import { useScrollReveal } from '@/hooks/useScrollReveal'
@@ -307,17 +307,24 @@ function CaroleRating() {
 export default function Home() {
   useScrollReveal()
   const timelineRef = useRef<HTMLOListElement>(null)
+  const travelTimelineRef = useRef<HTMLOListElement>(null)
 
   useEffect(() => {
-    const timeline = timelineRef.current
-    if (!timeline) return
+    const timelines = [timelineRef.current, travelTimelineRef.current].filter(
+      (timeline): timeline is HTMLOListElement => timeline !== null,
+    )
+    if (!timelines.length) return
+
     const observer = new IntersectionObserver((entries) => {
-      if (entries.some((entry) => entry.isIntersecting)) {
-        timeline.classList.add('is-visible')
-        observer.disconnect()
-      }
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible')
+          observer.unobserve(entry.target)
+        }
+      })
     }, { threshold: 0.2 })
-    observer.observe(timeline)
+
+    timelines.forEach((timeline) => observer.observe(timeline))
     return () => observer.disconnect()
   }, [])
 
@@ -414,14 +421,20 @@ export default function Home() {
             <section className="carole-timeline" aria-labelledby="carole-timeline-title">
               <h3 className="carole-timeline__heading" id="carole-timeline-title">Achievements and recognitions</h3>
               <ol className="carole-timeline__list" ref={timelineRef} aria-label="Achievements and recognitions">
-                <li className="carole-timeline__item" tabIndex={0}><article className="carole-timeline__card"><time dateTime="2025">2025</time><h4>Licensed Financial Advisor</h4></article></li>
-                <li className="carole-timeline__item" tabIndex={0}><article className="carole-timeline__card"><time dateTime="2025">2025</time><h4>Senior Achiever</h4></article></li>
-                <li className="carole-timeline__item" tabIndex={0}><article className="carole-timeline__card"><time dateTime="2026">2026</time><h4>Senior Achiever</h4></article></li>
+                <li className="carole-timeline__item" style={{ '--timeline-index': 0 } as CSSProperties} tabIndex={0}><article className="carole-timeline__card"><time dateTime="2025">2025</time><h4>Licensed Financial Advisor</h4></article></li>
+                <li className="carole-timeline__item" style={{ '--timeline-index': 1 } as CSSProperties} tabIndex={0}><article className="carole-timeline__card"><time dateTime="2025">2025</time><h4>Senior Achiever</h4></article></li>
+                <li className="carole-timeline__item" style={{ '--timeline-index': 2 } as CSSProperties} tabIndex={0}><article className="carole-timeline__card"><time dateTime="2026">2026</time><h4>Senior Achiever</h4></article></li>
               </ol>
             </section>
-            <section className="carole-travel" aria-labelledby="carole-travel-title">
-              <h3 id="carole-travel-title">Travel Qualifications</h3>
-              <ul><li>Bangkok, Thailand</li><li>Auckland, New Zealand</li><li>Bali, Indonesia</li><li>Fukuoka, Japan</li><li>Hanoi, Vietnam</li><li>Istanbul, Turkey</li><li>Nagano, Japan</li><li>Tokyo, Japan</li></ul>
+            <section className="carole-travel carole-timeline" aria-labelledby="carole-travel-title">
+              <h3 className="carole-timeline__heading" id="carole-travel-title">Travel qualifications</h3>
+              <ol className="carole-timeline__list carole-travel__list" ref={travelTimelineRef} aria-label="Travel qualifications">
+                {['Bangkok, Thailand', 'Auckland, New Zealand', 'Bali, Indonesia', 'Fukuoka, Japan', 'Hanoi, Vietnam', 'Istanbul, Turkey', 'Nagano, Japan', 'Tokyo, Japan'].map((destination, index) => (
+                  <li className="carole-timeline__item" key={destination} style={{ '--timeline-index': index } as CSSProperties} tabIndex={0}>
+                    <article className="carole-timeline__card"><time>Travel qualification</time><h4>{destination}</h4></article>
+                  </li>
+                ))}
+              </ol>
             </section>
             <p>Carole brings her experience as a Licensed Professional Teacher and Certified Financial Coach to conversations about family protection and financial goals.</p>
             <div className="carole-about__credentials">
