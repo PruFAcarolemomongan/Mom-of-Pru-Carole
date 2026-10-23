@@ -104,7 +104,7 @@ export default function App() {
           <HeroCanvas />
         </Suspense>
       )}
-      {phone && <QuickMenu className="qmenu--float" />}
+      {phone && pathname !== '/' && <QuickMenu className="qmenu--float" />}
       <div className="shell">
         <Rail />
         <main
