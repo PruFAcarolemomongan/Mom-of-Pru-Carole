@@ -24,7 +24,7 @@ export function HomeProfile() {
           <SealCheck size={16} weight="fill" className="hprofile__verified" aria-label={profile.verifiedLabel} />
         </span>
         <span className="hprofile__handle">
-          {profile.handle} · {profile.role}
+          {profile.role}
         </span>
       </div>
       <QuickMenu className="hprofile__menu" />

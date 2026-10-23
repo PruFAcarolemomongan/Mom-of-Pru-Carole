@@ -13,10 +13,24 @@ export default function TabBar() {
     <nav className="tabbar" aria-label="Page navigation">
       {TABS.map(({ label, href, Icon, ...rest }) => {
         const primary = 'primary' in rest && rest.primary
-        return <a key={label} href={href} className={'tabbar__tab' + (primary ? ' tabbar__tab--primary' : '')} {...(primary ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
-          {primary ? <span className="tabbar__fab"><Icon size={23} weight="bold" aria-hidden="true" /></span> : <><Icon size={22} aria-hidden="true" /><span className="tabbar__label">{label}</span></>}
-          {primary && <span className="tabbar__label">{label}</span>}
-        </a>
+        return (
+          <a
+            key={label}
+            href={href}
+            className={`tabbar__tab${primary ? ' tabbar__tab--primary' : ''}`}
+            {...(primary ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+          >
+            {primary ? (
+              <span className="tabbar__fab"><Icon size={23} weight="bold" aria-hidden="true" /></span>
+            ) : (
+              <>
+                <Icon size={22} aria-hidden="true" />
+                <span className="tabbar__label">{label}</span>
+              </>
+            )}
+            {primary && <span className="tabbar__label">{label}</span>}
+          </a>
+        )
       })}
     </nav>
   )
