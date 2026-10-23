@@ -2,25 +2,46 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <!-- viewport-fit=cover: without it every env(safe-area-inset-*) the phone
+         shell pads with is 0. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>Carole C. Momongan, LPT | Mom of Pru</title>
-    <meta name="description" content="Meet Carole C. Momongan, LPT, Certified Financial Coach, and Assistant Unit Manager at Pru Life UK. Book a conversation about your family's financial goals." />
-    <meta name="author" content="Carole C. Momongan" />
+
+    <!-- PLACEHOLDER - SEO. Replace the title, description, URLs and share image. -->
+    <title>Carole Momongan | Associate Unit Manager</title>
+    <meta name="description" content="Meet Carole Momongan, Associate Unit Manager. Book a conversation about your family's financial goals." />
+    <meta name="author" content="Carole Momongan" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
+    <!-- The browser bar takes the page colour (--cream per theme); the inline
+         theme script below and lib/theme.ts keep it in step with the toggle.
+         Literal hex here only because this runs before any stylesheet loads. -->
     <meta name="theme-color" content="#F4F4ED" />
+    <!-- <link rel="canonical" href="https://yoursite.com/" /> -->
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
-    <link rel="preload" as="image" href="/carole-momongan.jpg" fetchpriority="high" media="(min-width: 1100px)" />
+
+    <!-- The rail avatar is above the fold on every desktop route. Keep this in
+         sync with profile.avatarSrc in src/data/profile.ts. -->
+    <link rel="preload" as="image" href="/carole-main.jpg" fetchpriority="high" media="(min-width: 1100px)" />
+
+    <!-- Open Graph / social share. og:image must be an absolute URL once you deploy. -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Mom of Pru - Carole" />
-    <meta property="og:title" content="Carole C. Momongan, LPT | Mom of Pru" />
-    <meta property="og:description" content="Meet Carole C. Momongan, LPT, Certified Financial Coach, and Assistant Unit Manager at Pru Life UK. Book a conversation about your family's financial goals." />
+    <meta property="og:title" content="Carole Momongan | Associate Unit Manager" />
+    <meta property="og:description" content="Meet Carole Momongan, Associate Unit Manager. Book a conversation about your family's financial goals." />
+    <!-- <meta property="og:url" content="https://yoursite.com/" /> -->
+    <!-- <meta property="og:image" content="https://yoursite.com/share.png" /> -->
     <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Theme before first paint: no flash of the wrong palette. Default is
+         light; dark is the visitor's opt-in, persisted in localStorage. -->
     <script>
       (function () {
         try {
-          document.documentElement.dataset.theme = localStorage.getItem('theme') === 'dark' ? 'dark' : 'light';
+          document.documentElement.dataset.theme =
+            localStorage.getItem('theme') === 'dark' ? 'dark' : 'light';
         } catch (e) {
           document.documentElement.dataset.theme = 'light';
         }
