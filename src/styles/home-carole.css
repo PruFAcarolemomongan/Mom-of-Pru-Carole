@@ -1,3 +1,37 @@
+
+
+/* Direct header controls and animated ribbon accents */
+.carole-header__actions { display: inline-flex; align-items: center; justify-content: flex-end; gap: 9px; flex: 0 0 auto; }
+.qmenu--inline { position: relative; flex: 0 0 auto; }
+.qmenu--inline .qmenu__button { display: none !important; }
+.qmenu--inline .qmenu__panel { position: static !important; display: flex !important; align-items: center; gap: 7px; width: auto; margin: 0; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; opacity: 1; transform: none; visibility: visible; pointer-events: auto; }
+.qmenu--inline .qmenu__row { display: grid; place-items: center; flex: 0 0 34px; width: 34px; height: 34px; padding: 0; border: 1px solid rgba(255,255,255,.3); border-radius: 50%; background: rgba(255,255,255,.12); color: #fff; cursor: pointer; }
+.qmenu--inline .qmenu__row:hover, .qmenu--inline .qmenu__row:focus-visible { background: rgba(255,255,255,.24); }
+.qmenu--inline .qmenu__label { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.qmenu--inline .qmenu__switch, .qmenu--inline .qmenu__caret, .qmenu--inline .qmenu__sep { display: none !important; }
+.carole-header__actions .qmenu--inline .qmenu__row[role="switch"] { color: #fff; }
+.carole-header__actions .qmenu--inline .qmenu__row[aria-haspopup="dialog"] { color: #fff; }
+.carole-page > main { display: flex; flex-direction: column; }
+.carole-page > main > .carole-tools-marquee { order: 1; }
+.carole-page > main > .carole-app-feature { order: 2; }
+.carole-page > main > .carole-process { order: 3; }
+.carole-page > main > .carole-planning { order: 4; }
+.carole-page > main > .carole-about { order: 5; }
+.carole-page > main > .carole-careers { order: 6; }
+.carole-page > main > .carole-faq { order: 7; }
+.carole-page > main > .carole-booking { order: 8; }
+.carole-hero { overflow: hidden; }
+.carole-hero__ribbon { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; opacity: .72; pointer-events: none; }
+.carole-hero__ribbon path { fill: none; stroke: url(#carole-ribbon-gradient); stroke-width: 30; stroke-linecap: round; }
+.carole-hero__portrait-wrap { z-index: 1; }
+.carole-process { position: relative; overflow: hidden; }
+.carole-process__ribbon { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; opacity: .13; pointer-events: none; }
+.carole-process__ribbon path { fill: none; stroke: var(--carole-red); stroke-width: 26; stroke-linecap: round; stroke-dasharray: 115 54; animation: carole-ribbon-flow 24s linear infinite; }
+.carole-process > :not(.carole-process__ribbon) { position: relative; z-index: 1; }
+@keyframes carole-ribbon-flow { to { stroke-dashoffset: -676; } }
+@media (max-width: 900px) { .carole-header__actions { gap: 6px; } .qmenu--inline .qmenu__row { flex-basis: 30px; width: 30px; height: 30px; } }
+@media (max-width: 640px) { .carole-header__actions { gap: 5px; } .carole-header__cta { padding-inline: 8px; } }
+@media (prefers-reduced-motion: reduce) { .carole-process__ribbon path { animation: none; } }
 .carole-page {
   --carole-red: #d7193f;
   --carole-red-deep: #8e102b;
