@@ -283,7 +283,7 @@ function CaroleRating() {
   return (
     <div className="carole-rating" ref={ratingRef}>
       <div className="carole-rating__score-wrap">
-        <span className="carole-rating__score" ref={scoreRef}>4.9</span>
+        <span className="carole-rating__score" ref={scoreRef}>10.0</span>
         <span className="carole-rating__out-of">out of 10</span>
       </div>
       <div className="carole-rating__stars" role="img" aria-label="Rated 10 out of 10">
@@ -305,6 +305,20 @@ function CaroleRating() {
 
 export default function Home() {
   useScrollReveal()
+  const timelineRef = useRef<HTMLOListElement>(null)
+
+  useEffect(() => {
+    const timeline = timelineRef.current
+    if (!timeline) return
+    const observer = new IntersectionObserver((entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) {
+        timeline.classList.add('is-visible')
+        observer.disconnect()
+      }
+    }, { threshold: 0.2 })
+    observer.observe(timeline)
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <div className="carole-page" id="top">
@@ -396,6 +410,18 @@ export default function Home() {
             <p className="carole-kicker">Meet your adviser</p>
             <h2 id="about-title">Carole Momongan</h2>
             <p className="carole-about__role">Associate Unit Manager · Pru Life UK</p>
+            <section className="carole-timeline" aria-labelledby="carole-timeline-title">
+              <h3 className="carole-timeline__heading" id="carole-timeline-title">Achievements and recognitions</h3>
+              <ol className="carole-timeline__list" ref={timelineRef} aria-label="Achievements and recognitions">
+                <li className="carole-timeline__item" tabIndex={0}><article className="carole-timeline__card"><time dateTime="2025">2025</time><h4>Licensed Financial Advisor</h4></article></li>
+                <li className="carole-timeline__item" tabIndex={0}><article className="carole-timeline__card"><time dateTime="2025">2025</time><h4>Senior Achiever</h4></article></li>
+                <li className="carole-timeline__item" tabIndex={0}><article className="carole-timeline__card"><time dateTime="2026">2026</time><h4>Senior Achiever</h4></article></li>
+              </ol>
+            </section>
+            <section className="carole-travel" aria-labelledby="carole-travel-title">
+              <h3 id="carole-travel-title">Travel Qualifications</h3>
+              <ul><li>Bangkok, Thailand</li><li>Auckland, New Zealand</li><li>Bali, Indonesia</li><li>Fukuoka, Japan</li><li>Hanoi, Vietnam</li><li>Istanbul, Turkey</li><li>Nagano, Japan</li><li>Tokyo, Japan</li></ul>
+            </section>
             <p>Carole brings her experience as a Licensed Professional Teacher and Certified Financial Coach to conversations about family protection and financial goals.</p>
             <div className="carole-about__credentials">
               <span>Licensed Professional Teacher (LPT)</span>
@@ -439,6 +465,7 @@ export default function Home() {
       </main>
 
       <section className="carole-brand-signature" aria-label="Pru Life UK brand messages">
+        
         <p className="carole-brand-signature__tagline" aria-label="For Every Life, For Every Future">
           <span>For Every <em>Life,</em></span>
           <span>For Every <em>Future</em></span>
