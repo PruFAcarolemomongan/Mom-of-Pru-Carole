@@ -31,7 +31,7 @@ export default function App() {
   useLenis()
 
   const { pathname } = useLocation()
-  const FIXED_ROUTES = ['/', '/projects', '/testimonials', '/about', '/contact']
+  const FIXED_ROUTES = ['/projects', '/testimonials', '/about', '/contact']
   const isFixed = FIXED_ROUTES.includes(pathname)
   // Below the shell breakpoint the rail is gone: a bottom tab bar navigates,
   // the QuickMenu (theme + accessibility) floats top-right on every page but
@@ -102,7 +102,7 @@ export default function App() {
           <HeroCanvas />
         </Suspense>
       )}
-      {phone && pathname !== '/' && <QuickMenu className="qmenu--float" />}
+      {phone && <QuickMenu className="qmenu--float" />}
       <div className="shell">
         <Rail />
         <main
