@@ -55,7 +55,7 @@ export const profile: Profile = {
   firstName: 'Carole',
   handle: '',
   role: 'Associate Unit Manager',
-  avatarSrc: '/carole-about-crossed-cutout.png',
+  avatarSrc: '/carole-hero-cutout.png',
   aboutPortraitSrc: '/carole-about-crossed-cutout.png',
   verifiedLabel: 'Verified profile',
   email: 'pluk.carolemomongan@gmail.com',
