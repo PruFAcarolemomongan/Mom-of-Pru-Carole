@@ -40,6 +40,46 @@ export default function App() {
   // that header.
   const phone = useIsPhone()
   const panelRef = useRef<HTMLElement>(null)
+  const [sidebarHidden, setSidebarHidden] = useState(() => {
+    try {
+      return window.localStorage.getItem('carole-sidebar-hidden') === 'true'
+    } catch {
+      return false
+    }
+  })
+  const [sidebarPeeking, setSidebarPeeking] = useState(false)
+  const sidebarPeekTimerRef = useRef<number | null>(null)
+  const showSidebarRef = useRef<HTMLButtonElement>(null)
+  const sidebarVisible = !sidebarHidden || sidebarPeeking
+
+  useEffect(() => {
+    try {
+      window.localStorage.setItem('carole-sidebar-hidden', String(sidebarHidden))
+    } catch {
+      // The layout still works when storage is unavailable.
+    }
+  }, [sidebarHidden])
+
+  const hideSidebar = () => {
+    setSidebarHidden(true)
+    setSidebarPeeking(false)
+    window.requestAnimationFrame(() => showSidebarRef.current?.focus())
+  }
+  const showSidebar = () => {
+    if (sidebarPeekTimerRef.current !== null) window.clearTimeout(sidebarPeekTimerRef.current)
+    setSidebarHidden(false)
+    setSidebarPeeking(false)
+  }
+  const peekSidebar = () => {
+    if (!sidebarHidden) return
+    if (sidebarPeekTimerRef.current !== null) window.clearTimeout(sidebarPeekTimerRef.current)
+    setSidebarPeeking(true)
+  }
+  const scheduleSidebarPeekClose = () => {
+    if (!sidebarHidden) return
+    if (sidebarPeekTimerRef.current !== null) window.clearTimeout(sidebarPeekTimerRef.current)
+    sidebarPeekTimerRef.current = window.setTimeout(() => setSidebarPeeking(false), 300)
+  }
 
   // The panel is the scroller, so a route change has to reset it by hand -
   // the browser only restores scroll on the document.
@@ -105,14 +145,21 @@ export default function App() {
         </Suspense>
       )}
 
-      <div className="shell">
-        <Rail />
+      <div className={"shell" + (sidebarHidden ? " shell--sidebar-hidden" : "") + (sidebarPeeking ? " shell--sidebar-peeking" : "")}>
+        <div className="shell__edge-zone" aria-hidden="true" onPointerEnter={peekSidebar} />
+        <Rail sidebarVisible={sidebarVisible} sidebarPeeking={sidebarPeeking} onHide={hideSidebar} onDock={showSidebar} onPointerEnter={peekSidebar} onPointerLeave={scheduleSidebarPeekClose} />
         <main
           ref={panelRef}
           id={SCROLLER_ID}
           className="shell__panel"
           data-fixed={isFixed ? 'true' : 'false'}
         >
+          <button ref={showSidebarRef} type="button" className="shell__show-sidebar" aria-label="Show sidebar" aria-controls="profile-rail" aria-expanded={sidebarVisible} onClick={showSidebar}>
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="16" rx="2" />
+              <path d="M9 4v16" />
+            </svg>
+          </button>
           <Suspense fallback={null}>
             <Outlet />
           </Suspense>
