@@ -69,33 +69,120 @@ const faqs = [
   ['How do I book a time?', 'Use the booking button to view Carole’s available appointment times on Calendly.'],
 ]
 
-const programLogos = [
-  { name: 'PRUforce', src: '/pruforce.png' },
-  { name: 'PRU Leads', src: '/pru-leads.svg' },
-  { name: 'PRU Leads Club', src: '/pru-leads-club.png' },
-  { name: 'Achievers Club', src: '/achievers-club.png' },
-  { name: 'Life Club', src: '/life-club.png' },
-]
+const workTools = ['Google Sheets', 'Zoom', 'PRUforce', 'Google Meet', 'Calendly']
+const appScreenNames = ['Policy overview', 'App services', 'Fund switch']
 
-function ProgramLogoGroup({ duplicate = false }: { duplicate?: boolean }) {
+function ToolGroup({ duplicate = false }: { duplicate?: boolean }) {
   return (
-    <ul className="carole-marquee__group" aria-hidden={duplicate || undefined}>
-      {programLogos.map(({ name, src }) => (
-        <li className="carole-marquee__item" key={name}>
-          <img src={src} alt={duplicate ? '' : name} loading="lazy" />
+    <ul className="carole-tools-marquee__group" aria-hidden={duplicate || undefined}>
+      {workTools.map((name) => (
+        <li className="carole-tools-marquee__item" key={name}>
+          {name === 'PRUforce' ? <img src="/pruforce.png" alt={duplicate ? '' : name} loading="lazy" /> : <span>{name}</span>}
         </li>
       ))}
     </ul>
   )
 }
 
-function ProgramMarquee() {
+function ToolsMarquee() {
   return (
-    <section className="carole-marquee" aria-label="Pru Life UK programs and community">
-      <div className="carole-marquee__viewport">
-        <div className="carole-marquee__track">
-          <ProgramLogoGroup />
-          <ProgramLogoGroup duplicate />
+    <section className="carole-tools-marquee" aria-label="Tools Carole uses">
+      <p className="carole-tools-marquee__label">Tools I use</p>
+      <div className="carole-tools-marquee__viewport">
+        <div className="carole-tools-marquee__track">
+          <ToolGroup />
+          <ToolGroup duplicate />
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function PruAppFeature() {
+  const phoneRef = useRef<HTMLDivElement>(null)
+  const trackRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const phone = phoneRef.current
+    const track = trackRef.current
+    if (!phone || !track) return
+
+    const slides = Array.from(track.querySelectorAll<HTMLElement>('.carole-app-phone__slide'))
+    const dots = Array.from(phone.querySelectorAll<HTMLButtonElement>('.carole-app-phone__dot'))
+    let index = 0
+    let startX: number | null = null
+    let timer = 0
+    let resumeTimer = 0
+
+    const show = (next: number) => {
+      index = (next + slides.length) % slides.length
+      track.style.setProperty('--i', String(index))
+      slides.forEach((slide, slideIndex) => slide.setAttribute('aria-hidden', String(slideIndex !== index)))
+      dots.forEach((dot, dotIndex) => dot.setAttribute('aria-pressed', String(dotIndex === index)))
+    }
+    const startLoop = () => { timer = window.setInterval(() => show(index + 1), 2100) }
+    const pauseLoop = () => {
+      window.clearInterval(timer)
+      window.clearTimeout(resumeTimer)
+      resumeTimer = window.setTimeout(startLoop, 2500)
+    }
+
+    startLoop()
+    phone.addEventListener('pointerdown', (event) => { startX = event.clientX })
+    phone.addEventListener('pointerup', (event) => {
+      if (startX === null) return
+      const delta = event.clientX - startX
+      if (Math.abs(delta) > 38) show(index + (delta < 0 ? 1 : -1))
+      startX = null
+      pauseLoop()
+    })
+    phone.addEventListener('pointercancel', () => { startX = null; pauseLoop() })
+    phone.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowRight') { show(index + 1); pauseLoop() }
+      if (event.key === 'ArrowLeft') { show(index - 1); pauseLoop() }
+    })
+    dots.forEach((dot, dotIndex) => dot.addEventListener('click', () => { show(dotIndex); pauseLoop() }))
+
+    return () => {
+      window.clearInterval(timer)
+      window.clearTimeout(resumeTimer)
+    }
+  }, [])
+
+  return (
+    <section className="carole-app-feature" aria-labelledby="carole-app-title">
+      <div className="carole-app-feature__copy">
+        <p className="carole-kicker"><span /> Pru Life UK app</p>
+        <h2 id="carole-app-title">Your policy, closer at hand.</h2>
+        <p>View your policy, make payments, and check fund updates in one app.</p>
+        <div className="carole-app-feature__stores" aria-label="Get the Pru Life UK app">
+          <a className="carole-store-badge" href="https://apps.apple.com/ph/app/pru-life-uk/id6798558656" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 17v3h14v-3" /></svg>
+            <span><small>Download on the</small><strong>App Store</strong></span>
+          </a>
+          <a className="carole-store-badge" href="https://play.google.com/store/apps/details?id=com.prudential.pruservices.pluk" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 17v3h14v-3" /></svg>
+            <span><small>Get it on</small><strong>Google Play</strong></span>
+          </a>
+        </div>
+      </div>
+      <div className="carole-app-feature__visual">
+        <div className="carole-app-phone" ref={phoneRef} role="group" aria-label="Pru Life UK app screens. Swipe or use the arrow keys to browse." tabIndex={0}>
+          <span className="carole-app-phone__notch" aria-hidden="true" />
+          <div className="carole-app-phone__screen">
+            <div className="carole-app-phone__track" ref={trackRef}>
+              {Array.from({ length: 3 }, (_, index) => (
+                <div className="carole-app-phone__slide" key={index} role="group" aria-label={appScreenNames[index]} aria-hidden={index !== 0}>
+                  <img src="/pru-app-screens.png" alt="" style={{ left: `${-index * 100}%` }} loading="lazy" />
+                </div>
+              ))}
+            </div>
+            <div className="carole-app-phone__dots" aria-label="Choose an app screen">
+              {Array.from({ length: 3 }, (_, index) => (
+                <button className="carole-app-phone__dot" key={index} type="button" aria-label={`Show app screen ${index + 1}`} aria-pressed={index === 0} />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -231,10 +318,6 @@ export default function Home() {
               <a className="carole-text-link" href="#planning">Explore planning topics</a>
             </div>
             <CaroleRating />
-            <div className="carole-hero__credentials">
-              <span>Carole Momongan</span>
-              <small>Associate Unit Manager · Pru Life UK</small>
-            </div>
           </div>
           <div className="carole-hero__portrait-wrap">
             <div className="carole-hero__portrait-frame">
@@ -247,7 +330,8 @@ export default function Home() {
       </div>
 
       <main>
-        <ProgramMarquee />
+        <PruAppFeature />
+        <ToolsMarquee />
 
         <section className="carole-section carole-planning" id="planning" aria-labelledby="planning-title">
           <div className="carole-section__head">
@@ -289,7 +373,7 @@ export default function Home() {
           <div className="carole-about__image"><img src={profile.aboutPortraitSrc} alt="Carole Momongan holding a red folder" loading="lazy" /></div>
           <div className="carole-about__copy">
             <p className="carole-kicker">Meet your adviser</p>
-            <h2 id="about-title">Carole Momongan<SealCheck className="carole-hero__verified" size={25} weight="fill" aria-label={profile.verifiedLabel} /></h2>
+            <h2 id="about-title">Carole Momongan<SealCheck className="carole-about__verified" size={25} weight="fill" aria-label={profile.verifiedLabel} /></h2>
             <p className="carole-about__role">Associate Unit Manager · Pru Life UK</p>
             <p>Carole brings her experience as a Licensed Professional Teacher and Certified Financial Coach to conversations about family protection and financial goals.</p>
             <div className="carole-about__credentials">
