@@ -55,7 +55,7 @@ export const profile: Profile = {
   firstName: 'Carole',
   handle: '',
   role: 'Associate Unit Manager',
-  avatarSrc: '/carole-hero-cutout.png',
+  avatarSrc: '/carole-about-crossed-cutout.png',
   aboutPortraitSrc: '/carole-about-crossed-cutout.png',
   verifiedLabel: 'Verified profile',
   email: 'pluk.carolemomongan@gmail.com',
@@ -74,6 +74,6 @@ export const profile: Profile = {
     portraitAlt: 'Carole Momongan, Associate Unit Manager',
   },
   socials: [
-    { label: 'Carole on Facebook', href: 'https://www.facebook.com/profile.php?id=61577227094531', iconPath: '/icons/facebook.svg' },
+    { label: 'Carole on Facebook', href: 'https://www.facebook.com/profile.php?id=61577227094531', iconPath: '/icons/facebook.svg' }, { label: 'Carole on LinkedIn', href: 'https://www.linkedin.com/in/carolemomongan/', iconPath: '/icons/linkedin.svg' },
   ],
 }
