@@ -1,3 +1,7 @@
+/* Keep Carole’s landing page hidden until the intro handoff finishes. */
+html.is-intro .carole-page { visibility: hidden; opacity: 0; pointer-events: none; }
+html:not(.is-intro) .carole-page { visibility: visible; opacity: 1; transition: opacity 620ms var(--ease-out); }
+
 /* ============================================
    BOOT SEQUENCE - "the signal writes the line"
 
