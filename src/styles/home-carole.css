@@ -156,6 +156,16 @@
 .carole-contact-links { display: flex; flex-direction: column; align-items: flex-start; gap: 9px; }
 .carole-contact-links a { color: rgba(255,255,255,.85); font-size: 10px; text-decoration: underline; text-underline-offset: 3px; overflow-wrap: anywhere; }
 .carole-contact-links a:hover { color: white; }
+.carole-brand-signature { display: flex; align-items: center; justify-content: center; gap: clamp(30px,8vw,110px); padding: 38px 24px; background: #fff; color: #6a7076; }
+.carole-brand-signature__tagline { display: flex; flex-direction: column; gap: 0; margin: 0; font-size: clamp(22px,3vw,34px); font-weight: 300; letter-spacing: -.045em; line-height: 1.1; }
+.carole-brand-signature__tagline em { padding-left: .12em; color: var(--carole-red); font-family: 'Segoe Script', 'Brush Script MT', cursive; font-size: 1.18em; font-style: italic; font-weight: 600; letter-spacing: -.06em; }
+.carole-brand-signature__anniversary { width: 200px; color: var(--carole-red); text-align: center; }
+.carole-brand-signature__years { display: flex; align-items: center; justify-content: center; gap: 8px; }
+.carole-brand-signature__years strong { font-size: clamp(45px,6vw,66px); font-style: italic; font-weight: 700; letter-spacing: -.08em; line-height: .9; }
+.carole-brand-signature__years b { align-self: flex-start; padding-top: 7px; font-size: clamp(14px,1.8vw,20px); font-style: italic; font-weight: 700; line-height: 1; }
+.carole-brand-signature__wave { display: block; width: 100%; height: 18px; margin: -1px auto -2px; overflow: visible; }
+.carole-brand-signature__wave path { fill: none; stroke: currentColor; stroke-linecap: round; stroke-width: 6; }
+.carole-brand-signature__anniversary > span { display: block; font-size: 15px; font-style: italic; font-weight: 500; letter-spacing: -.035em; }
 .carole-footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 24px; padding: 20px clamp(30px,5vw,72px); background: var(--paper); color: var(--muted); font-size: 9px; }
 .carole-brand--footer .carole-brand__mark { width: 32px; height: 32px; font-size: 18px; }
 .carole-brand--footer b { font-size: 11px; }
@@ -211,6 +221,8 @@
   .carole-faq { grid-template-columns: 1fr; gap: 28px; padding: 66px 22px; }
   .carole-booking { grid-template-columns: 1fr; gap: 22px; padding: 62px 22px; }
   .carole-contact-links { grid-column: auto; flex-direction: column; }
+  .carole-brand-signature { flex-direction: column; gap: 24px; padding: 34px 20px; text-align: center; }
+  .carole-brand-signature__tagline { font-size: clamp(24px,7vw,32px); }
   .carole-footer { align-items: flex-start; flex-direction: column; padding: 20px 22px 100px; }
 }
 @media (prefers-reduced-motion: reduce) {
