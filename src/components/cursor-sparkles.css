@@ -1,0 +1,30 @@
+.cursor-sparkles {
+  position: fixed;
+  z-index: 10000;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  contain: layout paint;
+}
+
+.cursor-sparkle {
+  position: absolute;
+  font-size: var(--sparkle-size, 16px);
+  line-height: 1;
+  text-shadow: 0 1px 5px rgba(200, 16, 46, 0.18);
+  transform: translate(-50%, -50%);
+  animation: cursor-sparkle-rise 560ms cubic-bezier(0.18, 0.72, 0.3, 1) forwards;
+  will-change: transform, opacity;
+}
+
+@keyframes cursor-sparkle-rise {
+  from { opacity: 0.9; transform: translate(-50%, -50%) scale(0.45) rotate(0deg); }
+  to {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--sparkle-drift-x)), calc(-50% + var(--sparkle-drift-y))) scale(1.15) rotate(55deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor-sparkles { display: none; }
+}
