@@ -353,7 +353,7 @@
 .carole-travel { margin: 0 0 24px; }
 .carole-travel ul { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
 .carole-travel li { padding: 7px 11px; border: 1px solid rgba(168,20,50,.16); border-radius: 999px; color: #8f1733; font-size: .78rem; line-height: 1.25; }
-.carole-brand-signature { display: block; overflow: hidden; width: 100%; aspect-ratio: 2148 / 596; min-height: 0; padding: 0; background: #fff url('/pru-175-footer.png') center / contain no-repeat; }
+.carole-brand-signature { display: block; overflow: hidden; width: 100%; aspect-ratio: 2148 / 596; min-height: 0; padding: 0; background: #fff url('/codex-clipboard-a5384aa9-5ae4-43f0-84b4-07c9d9584fa6.png') center / contain no-repeat; }
 .carole-brand-signature > * { display: none !important; }
 .rail__theme { display: none !important; }
 @media (prefers-reduced-motion: reduce) { .carole-timeline__list::after { transform: scaleY(1); transition: none; } .carole-timeline__item, .carole-timeline__item::before { opacity: 1; transform: none; transition: none; } }
