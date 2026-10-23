@@ -34,7 +34,7 @@ const faqs = [
   ['How do I book a time?', 'Use the booking button to view Carole’s available appointment times on Calendly.'],
 ]
 
-const rating = 4.9
+const rating = 5.0
 const starPath = 'M12 2.8l2.77 5.62 6.2.9-4.49 4.38 1.06 6.18L12 16.96 6.46 19.88l1.06-6.18-4.49-4.38 6.2-.9L12 2.8z'
 
 function CaroleRating() {
@@ -109,7 +109,7 @@ function CaroleRating() {
         <span className="carole-rating__score" ref={scoreRef}>4.9</span>
         <span className="carole-rating__out-of">out of 5</span>
       </div>
-      <div className="carole-rating__stars" role="img" aria-label="Rated 4.9 out of 5">
+      <div className="carole-rating__stars" role="img" aria-label="Rated 5 out of 5">
         {Array.from({ length: 5 }, (_, index) => (
           <span className="carole-rating__star" key={index} aria-hidden="true">
             <span className="carole-rating__base">
@@ -121,7 +121,7 @@ function CaroleRating() {
           </span>
         ))}
       </div>
-      <span className="carole-rating__caption">Rated 4.9 out of 5</span>
+      <span className="carole-rating__caption">Rated 5 out of 5</span>
     </div>
   )
 }
