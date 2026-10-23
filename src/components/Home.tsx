@@ -70,14 +70,59 @@ const faqs = [
 ]
 
 const workTools = ['Google Sheets', 'Zoom', 'PRUforce', 'Google Meet', 'Calendly']
-const appScreenNames = ['Policy overview', 'App services', 'Fund switch']
+const appScreens = [
+  { name: 'Policy overview', src: '/pru-app-home.png' },
+  { name: 'App services', src: '/pru-app-features.png' },
+  { name: 'Fund switch', src: '/pru-app-fund-switch.png' },
+  { name: 'Contact information update', src: '/pru-app-contact-update.png' },
+  { name: 'Rewards and offers', src: '/pru-app-rewards.png' },
+]
+
+function WorkToolLogo({ name }: { name: string }) {
+  if (name === 'PRUforce') return <img className="carole-tools-marquee__logo carole-tools-marquee__logo--pruforce" src="/pruforce.png" alt="" loading="lazy" />
+
+  if (name === 'Google Sheets') return (
+    <svg className="carole-tools-marquee__logo" viewBox="0 0 40 40" aria-hidden="true">
+      <path fill="#188038" d="M10 3h14l8 8v25a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" />
+      <path fill="#34A853" d="M24 3v8h8Z" />
+      <path fill="#fff" d="M13 16h14v13H13z" />
+      <path fill="#188038" d="M18.8 16h2.1v13h-2.1zM13 21.5h14v2.1H13z" />
+    </svg>
+  )
+
+  if (name === 'Zoom') return (
+    <svg className="carole-tools-marquee__logo" viewBox="0 0 40 40" aria-hidden="true">
+      <circle cx="20" cy="20" r="18" fill="#2D8CFF" />
+      <path fill="#fff" d="M8 14.5h13a3 3 0 0 1 3 3v8H11a3 3 0 0 1-3-3Zm17 4 7-4v14l-7-4Z" />
+    </svg>
+  )
+
+  if (name === 'Google Meet') return (
+    <svg className="carole-tools-marquee__logo" viewBox="0 0 40 40" aria-hidden="true">
+      <path fill="#00832D" d="M5 12a3 3 0 0 1 3-3h4l4 5v12l-4 5H8a3 3 0 0 1-3-3Z" />
+      <path fill="#0066DA" d="M16 14h10v12H16z" />
+      <path fill="#00AC47" d="M12 9h12l-4 6H12z" />
+      <path fill="#EA4335" d="m26 16 9-6v20l-9-6Z" />
+      <path fill="#2684FC" d="M12 26h12l-4 6H12z" />
+      <path fill="#FFBA00" d="M16 14h4v12h-4z" />
+    </svg>
+  )
+
+  return (
+    <svg className="carole-tools-marquee__logo carole-tools-marquee__logo--calendly" viewBox="0 0 40 40" aria-hidden="true">
+      <rect x="2" y="2" width="36" height="36" rx="11" fill="#006BFF" />
+      <path fill="#fff" d="M21.7 10.5a9.5 9.5 0 1 0 0 19 9.5 9.5 0 0 0 0-19Zm0 4.2a5.3 5.3 0 1 1 0 10.6 5.3 5.3 0 0 1 0-10.6Z" />
+    </svg>
+  )
+}
 
 function ToolGroup({ duplicate = false }: { duplicate?: boolean }) {
   return (
     <ul className="carole-tools-marquee__group" aria-hidden={duplicate || undefined}>
       {workTools.map((name) => (
-        <li className="carole-tools-marquee__item" key={name}>
-          {name === 'PRUforce' ? <img src="/pruforce.png" alt={duplicate ? '' : name} loading="lazy" /> : <span>{name}</span>}
+        <li className="carole-tools-marquee__item" key={name} aria-label={duplicate ? undefined : name}>
+          <WorkToolLogo name={name} />
+          <span>{name}</span>
         </li>
       ))}
     </ul>
@@ -171,14 +216,14 @@ function PruAppFeature() {
           <span className="carole-app-phone__notch" aria-hidden="true" />
           <div className="carole-app-phone__screen">
             <div className="carole-app-phone__track" ref={trackRef}>
-              {Array.from({ length: 3 }, (_, index) => (
-                <div className="carole-app-phone__slide" key={index} role="group" aria-label={appScreenNames[index]} aria-hidden={index !== 0}>
-                  <img src="/pru-app-screens.png" alt="" style={{ left: `${-index * 100}%` }} loading="lazy" />
+              {appScreens.map(({ name, src }, index) => (
+                <div className="carole-app-phone__slide" key={name} role="group" aria-label={name} aria-hidden={index !== 0}>
+                  <img src={src} alt="" loading={index === 0 ? 'eager' : 'lazy'} />
                 </div>
               ))}
             </div>
             <div className="carole-app-phone__dots" aria-label="Choose an app screen">
-              {Array.from({ length: 3 }, (_, index) => (
+              {appScreens.map((_, index) => (
                 <button className="carole-app-phone__dot" key={index} type="button" aria-label={`Show app screen ${index + 1}`} aria-pressed={index === 0} />
               ))}
             </div>
