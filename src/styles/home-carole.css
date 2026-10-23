@@ -268,3 +268,20 @@
   .carole-rating__fill { transition: none; }
   .carole-rating__star { animation: none !important; }
 }
+
+
+/* Mobile header tools and app download placement */
+@media (max-width: 900px) {
+  .carole-header__tools { display: flex !important; align-items: center; flex: 0 0 auto; }
+}
+
+@media (max-width: 640px) {
+  .carole-app-feature__copy { display: contents; }
+  .carole-app-feature__copy > .carole-kicker { grid-row: 1; }
+  .carole-app-feature__copy > h2 { grid-row: 2; }
+  .carole-app-feature__copy > p:not(.carole-kicker) { grid-row: 3; }
+  .carole-app-feature__visual { grid-row: 4; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+  .carole-app-feature__stores { grid-row: 5; width: 100%; max-width: 500px; margin-top: 0; }
+}
+
+@media (min-width: 901px) { .carole-header__tools { display: none !important; } }
