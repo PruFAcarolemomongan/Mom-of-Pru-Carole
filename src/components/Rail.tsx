@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { SealCheck } from '@/components/slab'
 import ThemeGlyph from './ThemeGlyph'
 import { HomeIcon, StackIcon, UserIcon } from './RailIcons'
 import { getTheme, toggleTheme, type Theme } from '@/lib/theme'
@@ -43,7 +42,6 @@ export default function Rail() {
 
         <h2 className="rail__name">
           {profile.name}
-          <SealCheck size={19} weight="fill" aria-label={profile.verifiedLabel} />
         </h2>
         <p className="rail__handle">{profile.role}</p>
 

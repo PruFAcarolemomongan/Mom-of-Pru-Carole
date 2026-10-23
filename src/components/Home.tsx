@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import type { MouseEvent } from 'react'
-import { ArrowUpRight, Heart, ShieldCheck, GraduationCap, SealCheck, CheckCircle } from '@/components/slab'
+import { ArrowUpRight, Heart, ShieldCheck, GraduationCap, CheckCircle } from '@/components/slab'
 import { profile } from '@/data/profile'
 import { useScrollReveal } from '@/hooks/useScrollReveal'
 import '@/styles/home-carole.css'
@@ -352,7 +352,7 @@ export default function Home() {
           <div className="carole-hero__copy">
             <p className="carole-kicker"><span /> Pru Life UK · Mom of Pru</p>
             <h1 className="carole-hero__title" id="home-title">
-              {profile.name}<SealCheck className="carole-hero__verified" size={30} weight="fill" aria-label={profile.verifiedLabel} />
+              {profile.name}
             </h1>
             <p className="carole-hero__role">{profile.role}</p>
             <p className="carole-hero__lede">{profile.hero.body}</p>
@@ -418,7 +418,7 @@ export default function Home() {
           <div className="carole-about__image"><img src={profile.aboutPortraitSrc} alt="Carole Momongan holding a red folder" loading="lazy" /></div>
           <div className="carole-about__copy">
             <p className="carole-kicker">Meet your adviser</p>
-            <h2 id="about-title">Carole Momongan<SealCheck className="carole-about__verified" size={25} weight="fill" aria-label={profile.verifiedLabel} /></h2>
+            <h2 id="about-title">Carole Momongan</h2>
             <p className="carole-about__role">Associate Unit Manager · Pru Life UK</p>
             <p>Carole brings her experience as a Licensed Professional Teacher and Certified Financial Coach to conversations about family protection and financial goals.</p>
             <div className="carole-about__credentials">
