@@ -386,3 +386,12 @@
 }
 @media (max-width: 640px) { .carole-travel__cube-scene { --travel-depth: 109px; height: 90px; } }
 @media (prefers-reduced-motion: reduce) { .carole-travel__cube { animation: none; transform: none; } .carole-travel__face:not(:first-child) { display: none; } .carole-travel__face:first-child { transform: none; } }
+
+
+/* Header identity: Carole's profile image, name, and Mom of Pru label */
+.carole-brand__avatar { display: block; width: 40px; height: 40px; flex: 0 0 40px; border: 2px solid rgba(255,255,255,.8); border-radius: 50%; background: #fff; object-fit: cover; object-position: center 22%; }
+.carole-brand__identity { display: block; }
+.carole-brand b.carole-brand__name { display: flex; align-items: center; gap: 5px; font-style: normal; }
+.carole-brand__name svg { flex: 0 0 auto; color: #7dd3fc; }
+.carole-brand__tagline { font-weight: 700; font-style: italic; }
+@media (max-width: 640px) { .carole-brand__avatar { width: 31px; height: 31px; flex-basis: 31px; } }
