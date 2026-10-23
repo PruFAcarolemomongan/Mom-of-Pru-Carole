@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import { ArrowUpRight, Heart, ShieldCheck, GraduationCap, SealCheck, CheckCircle } from '@/components/slab'
 import { profile } from '@/data/profile'
 import { useScrollReveal } from '@/hooks/useScrollReveal'
@@ -32,6 +33,98 @@ const faqs = [
   ['Do I need to prepare anything?', 'You can bring questions or a general idea of what you want to plan for. Please do not send sensitive personal or financial documents through this page.'],
   ['How do I book a time?', 'Use the booking button to view Carole’s available appointment times on Calendly.'],
 ]
+
+const rating = 4.9
+const starPath = 'M12 2.8l2.77 5.62 6.2.9-4.49 4.38 1.06 6.18L12 16.96 6.46 19.88l1.06-6.18-4.49-4.38 6.2-.9L12 2.8z'
+
+function CaroleRating() {
+  const ratingRef = useRef<HTMLDivElement>(null)
+  const scoreRef = useRef<HTMLSpanElement>(null)
+
+  useEffect(() => {
+    const ratingGroup = ratingRef.current
+    const score = scoreRef.current
+    if (!ratingGroup || !score) return
+
+    const stars = Array.from(ratingGroup.querySelectorAll<HTMLElement>('.carole-rating__star'))
+    const fills = Array.from(ratingGroup.querySelectorAll<HTMLElement>('.carole-rating__fill'))
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    let frame = 0
+    let started = false
+
+    const showFinalRating = () => {
+      score.textContent = rating.toFixed(1)
+      stars.forEach((star, index) => {
+        const fraction = Math.max(0, Math.min(1, rating - index))
+        const percent = (1 - fraction) * 100
+        const fill = fills[index]
+        if (fill) fill.style.clipPath = `inset(0 ${percent}% 0 0)`
+        star.style.animation = 'none'
+      })
+    }
+
+    if (reducedMotion) {
+      showFinalRating()
+      return
+    }
+
+    score.textContent = '0.0'
+    const animateRating = () => {
+      if (started) return
+      started = true
+      const totalDuration = 400 + (stars.length - 1) * 190
+
+      fills.forEach((fill, index) => {
+        const fraction = Math.max(0, Math.min(1, rating - index))
+        const percent = (1 - fraction) * 100
+        fill.style.transitionDelay = `${index * 190}ms`
+        fill.style.clipPath = `inset(0 ${percent}% 0 0)`
+        stars[index].style.animation = `carole-star-pop 560ms cubic-bezier(.2, 1.4, .4, 1) ${index * 190}ms both`
+      })
+
+      const start = performance.now()
+      const tick = (now: number) => {
+        const progress = Math.min(1, (now - start) / totalDuration)
+        score.textContent = (rating * progress).toFixed(1)
+        if (progress < 1) frame = requestAnimationFrame(tick)
+      }
+      frame = requestAnimationFrame(tick)
+      observer.disconnect()
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) animateRating()
+    }, { threshold: 0.45 })
+    observer.observe(ratingGroup)
+
+    return () => {
+      observer.disconnect()
+      cancelAnimationFrame(frame)
+    }
+  }, [])
+
+  return (
+    <div className="carole-rating" ref={ratingRef}>
+      <div className="carole-rating__score-wrap">
+        <span className="carole-rating__score" ref={scoreRef}>4.9</span>
+        <span className="carole-rating__out-of">out of 5</span>
+      </div>
+      <div className="carole-rating__stars" role="img" aria-label="Rated 4.9 out of 5">
+        {Array.from({ length: 5 }, (_, index) => (
+          <span className="carole-rating__star" key={index} aria-hidden="true">
+            <span className="carole-rating__base">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" strokeLinecap="round"><path d={starPath} /></svg>
+            </span>
+            <span className="carole-rating__fill">
+              <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" strokeLinecap="round"><path d={starPath} /></svg>
+            </span>
+          </span>
+        ))}
+      </div>
+      <span className="carole-rating__caption">Rated 4.9 out of 5</span>
+    </div>
+  )
+}
 
 export default function Home() {
   useScrollReveal()
@@ -69,6 +162,7 @@ export default function Home() {
               </a>
               <a className="carole-text-link" href="#planning">Explore planning topics</a>
             </div>
+            <CaroleRating />
             <div className="carole-hero__credentials">
               <span>Carole Momongan</span>
               <small>Associate Unit Manager · Pru Life UK</small>
