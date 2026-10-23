@@ -78,8 +78,32 @@ export default function App() {
   const scheduleSidebarPeekClose = () => {
     if (!sidebarHidden) return
     if (sidebarPeekTimerRef.current !== null) window.clearTimeout(sidebarPeekTimerRef.current)
-    sidebarPeekTimerRef.current = window.setTimeout(() => setSidebarPeeking(false), 300)
+    sidebarPeekTimerRef.current = window.setTimeout(() => {
+      sidebarPeekTimerRef.current = null
+      setSidebarPeeking(false)
+    }, 300)
   }
+
+  useEffect(() => {
+    if (!sidebarHidden || !sidebarPeeking) return
+    const handlePointerMove = (event: PointerEvent) => {
+      const rail = document.getElementById('profile-rail')
+      if (!rail) return
+      const bounds = rail.getBoundingClientRect()
+      const inside = event.clientX >= bounds.left && event.clientX <= bounds.right && event.clientY >= bounds.top && event.clientY <= bounds.bottom
+      if (inside) {
+        if (sidebarPeekTimerRef.current !== null) window.clearTimeout(sidebarPeekTimerRef.current)
+        sidebarPeekTimerRef.current = null
+      } else if (sidebarPeekTimerRef.current === null) {
+        sidebarPeekTimerRef.current = window.setTimeout(() => {
+          sidebarPeekTimerRef.current = null
+          setSidebarPeeking(false)
+        }, 300)
+      }
+    }
+    window.addEventListener('pointermove', handlePointerMove, { passive: true })
+    return () => window.removeEventListener('pointermove', handlePointerMove)
+  }, [sidebarHidden, sidebarPeeking])
 
   // The panel is the scroller, so a route change has to reset it by hand -
   // the browser only restores scroll on the document.
