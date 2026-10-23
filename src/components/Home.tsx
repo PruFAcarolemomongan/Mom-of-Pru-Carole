@@ -69,6 +69,39 @@ const faqs = [
   ['How do I book a time?', 'Use the booking button to view Carole’s available appointment times on Calendly.'],
 ]
 
+const programLogos = [
+  { name: 'PRUforce', src: '/pruforce.png' },
+  { name: 'PRU Leads', src: '/pru-leads.svg' },
+  { name: 'PRU Leads Club', src: '/pru-leads-club.png' },
+  { name: 'Achievers Club', src: '/achievers-club.png' },
+  { name: 'Life Club', src: '/life-club.png' },
+]
+
+function ProgramLogoGroup({ duplicate = false }: { duplicate?: boolean }) {
+  return (
+    <ul className="carole-marquee__group" aria-hidden={duplicate || undefined}>
+      {programLogos.map(({ name, src }) => (
+        <li className="carole-marquee__item" key={name}>
+          <img src={src} alt={duplicate ? '' : name} loading="lazy" />
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+function ProgramMarquee() {
+  return (
+    <section className="carole-marquee" aria-label="Pru Life UK programs and community">
+      <div className="carole-marquee__viewport">
+        <div className="carole-marquee__track">
+          <ProgramLogoGroup />
+          <ProgramLogoGroup duplicate />
+        </div>
+      </div>
+    </section>
+  )
+}
+
 const rating = 5.0
 const starPath = 'M12 2.8l2.77 5.62 6.2.9-4.49 4.38 1.06 6.18L12 16.96 6.46 19.88l1.06-6.18-4.49-4.38 6.2-.9L12 2.8z'
 
@@ -214,6 +247,7 @@ export default function Home() {
       </div>
 
       <main>
+        <ProgramMarquee />
 
         <section className="carole-section carole-planning" id="planning" aria-labelledby="planning-title">
           <div className="carole-section__head">
