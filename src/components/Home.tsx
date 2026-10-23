@@ -433,7 +433,7 @@ export default function Home() {
           <div className="carole-contact-links" aria-label="Contact Carole">
             <a href="tel:+639177173046">{profile.phone}</a>
             <a href={`mailto:${profile.email}`}>{profile.email}</a>
-            {profile.socials.map((social) => <a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer">Facebook profile</a>)}
+            {profile.socials.map((social) => <a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer">{social.href.includes('linkedin.com') ? 'LinkedIn profile' : 'Facebook profile'}</a>)}
           </div>
         </section>
       </main>
