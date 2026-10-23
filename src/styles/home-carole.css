@@ -101,13 +101,15 @@
 .carole-app-feature__copy h2 { max-width: 590px; margin: 0; color: var(--navy); font-size: clamp(38px,5vw,66px); font-weight: 600; letter-spacing: -.06em; line-height: 1.02; }
 .carole-app-feature__copy > p:not(.carole-kicker) { max-width: 550px; margin: 19px 0 0; color: var(--muted); font-size: clamp(14px,1.3vw,17px); line-height: 1.7; }
 .carole-app-feature__stores { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 27px; }
-.carole-store-badge { display: inline-flex; align-items: center; gap: 11px; min-width: 164px; min-height: 58px; padding: 9px 15px; border: 1px solid #292a2e; border-radius: 12px; background: #17181b; color: #fff; text-decoration: none; box-shadow: 0 8px 18px rgba(22,20,23,.12); transition: transform .2s ease, box-shadow .2s ease; }
+.carole-store-badge { display: inline-flex; align-items: center; gap: 12px; min-width: 178px; min-height: 64px; padding: 10px 17px; border: 1px solid #292a2e; border-radius: 15px; background: #17181b; color: #fff; text-decoration: none; box-shadow: 0 8px 18px rgba(22,20,23,.12); transition: transform .2s ease, box-shadow .2s ease; }
 .carole-store-badge:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(22,20,23,.18); }
 .carole-store-badge:focus-visible, .carole-app-phone:focus-visible { outline: 3px solid #ff8ea3; outline-offset: 4px; }
 .carole-store-badge svg { width: 25px; height: 25px; flex: 0 0 auto; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.carole-store-badge .carole-store-badge__apple { width: 31px; height: 31px; fill: #fff; stroke: none; }
+.carole-store-badge .carole-store-badge__play { width: 29px; height: 29px; stroke: none; }
 .carole-store-badge span, .carole-store-badge small, .carole-store-badge strong { display: block; }
 .carole-store-badge small { color: rgba(255,255,255,.78); font-size: 9px; line-height: 1.2; }
-.carole-store-badge strong { margin-top: 2px; font-size: 15px; font-weight: 600; line-height: 1.2; }
+.carole-store-badge strong { margin-top: 2px; font-size: 16px; font-weight: 600; line-height: 1.2; }
 .carole-app-feature__visual { display: flex; justify-content: center; min-width: 0; }
 .carole-app-phone { position: relative; width: clamp(238px,26vw,300px); aspect-ratio: 9 / 18.6; padding: 9px; overflow: hidden; border: 8px solid #202126; border-radius: 42px; background: #202126; box-shadow: 0 28px 54px rgba(75,8,25,.2), inset 0 1px 0 rgba(255,255,255,.24); touch-action: pan-y; }
 .carole-app-phone__notch { position: absolute; top: 12px; left: 50%; z-index: 3; width: 29%; height: 16px; border-radius: 999px; background: #202126; transform: translateX(-50%); }
@@ -241,7 +243,7 @@
   .carole-app-feature { grid-template-columns: 1fr; gap: 32px; padding: 64px 22px; }
   .carole-app-feature__copy h2 { font-size: clamp(36px,10vw,48px); }
   .carole-app-feature__stores { gap: 9px; }
-  .carole-store-badge { min-width: min(160px, calc(50vw - 29px)); padding: 9px 10px; }
+  .carole-store-badge { min-width: min(160px, calc(50vw - 29px)); min-height: 58px; padding: 8px 10px; }
   .carole-app-phone { width: min(76vw, 280px); }
   .carole-app-feature__visual { padding-top: 3px; }
   .carole-tools-marquee { padding: 15px 0 19px; }
