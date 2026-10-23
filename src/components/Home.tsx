@@ -314,18 +314,18 @@ export default function Home() {
             <span className="carole-brand__mark">C</span>
             <span><b>Mom of Pru</b><small>Carole Momongan</small></span>
           </a>
-          <div className="carole-header__tools"><QuickMenu /></div><nav className="carole-nav" aria-label="Main navigation">
+          <nav className="carole-nav" aria-label="Main navigation">
             <a href="#top">Home</a>
             <a href="#about">About</a>
             <a href="#planning">Planning</a> <a href="#careers">Careers</a>
             <a href="#faq">FAQs</a>
           </nav>
-          <a className="carole-header__cta" href={profile.bookingUrl} onClick={openBooking}>
+          <div className="carole-header__actions"><QuickMenu className="qmenu--inline" /><a className="carole-header__cta" href={profile.bookingUrl} onClick={openBooking}>
             Contact Carole <ArrowUpRight size={16} weight="bold" aria-hidden="true" />
           </a>
-        </header>
+          </div></header>
 
-        <section className="carole-hero" aria-labelledby="home-title">
+        <section className="carole-hero" aria-labelledby="home-title"><svg className="carole-hero__ribbon" viewBox="0 0 1440 700" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="carole-ribbon-gradient" x1="0" x2="1" y1="0" y2="1"><stop stopColor="#ed284d" /><stop offset="1" stopColor="#ff9ba9" /></linearGradient></defs><path d="M-90 510 C150 355 360 680 615 600 C870 520 770 405 675 300 C560 175 665 85 850 92 C1090 102 1240 46 1500 -80" /></svg>
           <div className="carole-hero__copy">
             <p className="carole-kicker"><span /> Pru Life UK · Mom of Pru</p>
             <h1 className="carole-hero__title" id="home-title">
@@ -374,7 +374,7 @@ export default function Home() {
           <p className="carole-disclosure">Any financial product recommendation depends on your needs, eligibility, and the applicable policy terms.</p>
         </section>
 
-        <section className="carole-section carole-process" aria-labelledby="process-title">
+        <section className="carole-section carole-process" aria-labelledby="process-title"><svg className="carole-process__ribbon" viewBox="0 0 1440 420" preserveAspectRatio="none" aria-hidden="true"><path d="M-80 315 C180 145 360 410 620 300 S900 185 770 105 S690 35 920 55 S1220 175 1510 -35" /></svg>
           <div className="carole-section__head carole-section__head--compact">
             <p className="carole-kicker">A simple place to begin</p>
             <h2 id="process-title">A clear conversation. <em>Your pace.</em></h2>
