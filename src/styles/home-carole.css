@@ -91,7 +91,7 @@
 .carole-hero__credentials small { display: block; margin-top: 5px; color: rgba(255,255,255,.71); font-size: 10px; letter-spacing: .02em; }
 .carole-hero__portrait-wrap { position: relative; align-self: stretch; justify-self: center; display: flex; align-items: flex-end; width: min(100%, 500px); min-height: 440px; padding: 0 0 18px; }
 .carole-hero__portrait-frame { position: absolute; inset: 0; display: flex; align-items: flex-end; justify-content: center; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; overflow: visible; }
-.carole-hero__portrait { position: relative; display: block; width: 100%; height: 100%; min-height: 440px; object-fit: contain; object-position: center bottom; border-radius: 0; filter: drop-shadow(0 18px 18px rgba(47,4,15,.2)); transform: scale(1.18); transform-origin: center bottom; }
+.carole-hero__portrait { position: relative; display: block; width: 100%; height: 100%; min-height: 440px; object-fit: contain; object-position: center bottom; border-radius: 0; filter: drop-shadow(0 18px 18px rgba(47,4,15,.2)); transform: scale(1.18); transform-origin: center bottom; -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 78%, transparent 100%); mask-image: linear-gradient(to bottom, #000 0%, #000 78%, transparent 100%); }
 .carole-hero__caption { position: absolute; right: -18px; bottom: 4px; z-index: 2; display: flex; align-items: center; gap: 9px; padding: 12px 16px; border: 1px solid rgba(255,255,255,.22); border-radius: 999px; background: rgba(45,6,17,.76); color: #fff; box-shadow: 0 12px 34px rgba(53,3,15,.22); font-size: 10px; font-weight: 600; backdrop-filter: blur(10px); }
 .carole-hero__caption svg { color: #ffc0cc; }
 .carole-caption-dot { width: 7px; height: 7px; color: var(--carole-red); }
@@ -99,6 +99,14 @@
 .carole-scroll span { width: 34px; height: 1px; background: #ffadb9; }
 
 .carole-section { padding: clamp(76px, 9vw, 120px) clamp(30px, 7vw, 100px); }
+.carole-marquee { position: relative; padding: 21px 0; overflow: hidden; border-top: 1px solid rgba(101,13,34,.07); border-bottom: 1px solid rgba(101,13,34,.07); background: #fff; }
+.carole-marquee__viewport { overflow: hidden; }
+.carole-marquee__track { display: flex; width: max-content; animation: carole-marquee-scroll 42s linear infinite; }
+.carole-marquee:hover .carole-marquee__track, .carole-marquee:focus-within .carole-marquee__track { animation-play-state: paused; }
+.carole-marquee__group { display: flex; align-items: center; justify-content: space-evenly; gap: clamp(18px, 3vw, 40px); width: max-content; min-width: 100vw; min-height: 92px; margin: 0; padding: 0 clamp(24px, 4vw, 56px); box-sizing: border-box; list-style: none; }
+.carole-marquee__item { display: grid; flex: 0 0 clamp(145px, 17vw, 215px); place-items: center; height: 88px; padding: 8px 15px; border: 1px solid rgba(22,38,58,.07); border-radius: 15px; background: #fff; box-shadow: 0 8px 23px rgba(55,18,27,.045); }
+.carole-marquee__item img { display: block; width: 100%; max-width: 188px; height: 68px; object-fit: contain; image-rendering: auto; }
+@keyframes carole-marquee-scroll { to { transform: translateX(-50%); } }
 .carole-planning { background: var(--paper); }
 .carole-section__head { max-width: 760px; margin-bottom: 39px; }
 .carole-section__head .carole-kicker { margin-bottom: 13px; }
@@ -208,6 +216,10 @@
   .carole-hero__credentials { margin-top: 24px; }
   .carole-scroll { left: 22px; bottom: 25px; }
   .carole-section { padding: 68px 22px; }
+  .carole-marquee { padding: 15px 0; }
+  .carole-marquee__group { min-height: 78px; gap: 14px; padding-inline: 18px; }
+  .carole-marquee__item { flex-basis: 148px; height: 72px; padding: 7px 12px; border-radius: 12px; }
+  .carole-marquee__item img { height: 56px; }
   .carole-section__head { margin-bottom: 27px; }
   .carole-section__head h2, .carole-booking h2, .carole-faq h2 { font-size: clamp(32px,9vw,45px); }
   .carole-topic-grid { grid-template-columns: 1fr; gap: 10px; }
@@ -226,6 +238,7 @@
   .carole-footer { align-items: flex-start; flex-direction: column; padding: 20px 22px 100px; }
 }
 @media (prefers-reduced-motion: reduce) {
+  .carole-marquee__track { animation: none; }
   .carole-button, .carole-topic, .carole-faq__item summary span { transition: none; }
   .carole-rating__fill { transition: none; }
   .carole-rating__star { animation: none !important; }
