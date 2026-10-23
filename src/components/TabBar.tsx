@@ -1,4 +1,4 @@
-import { House, Stack, User, CalendarBlank } from '@/components/slab'
+import { House, Stack, User, CalendarBlank, Briefcase } from '@/components/slab'
 import { profile } from '@/data/profile'
 
 const TABS = [
@@ -6,6 +6,7 @@ const TABS = [
   { label: 'Planning', href: '#planning', Icon: Stack },
   { label: 'Book', href: profile.bookingUrl, Icon: CalendarBlank, primary: true },
   { label: 'About', href: '#about', Icon: User },
+  { label: 'Careers', href: '#careers', Icon: Briefcase },
 ] as const
 
 export default function TabBar() {
