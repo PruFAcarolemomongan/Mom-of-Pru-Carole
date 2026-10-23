@@ -58,9 +58,10 @@ const planningTopics = [
 ]
 
 const steps = [
-  ['01', 'Tell me what matters to you', 'Share the people, plans, and priorities you want to prepare for.'],
-  ['02', 'Explore your options', 'We can review suitable options together and answer your questions.'],
-  ['03', 'Choose your next step', 'Take the time you need to decide what feels right for you.'],
+  ['01', 'Explore', 'Share the people, plans, and priorities you want to prepare for.'],
+  ['02', 'Connect', 'Connect with Carole to discuss your priorities and questions.'],
+  ['03', 'Understand', 'Review suitable options and how they relate to your goals.'],
+  ['04', 'Plan', 'Agree on a practical next step that fits your priorities.'],
 ]
 
 const faqs = [
