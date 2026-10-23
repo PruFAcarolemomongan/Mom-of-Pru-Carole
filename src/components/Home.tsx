@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import type { CSSProperties, MouseEvent } from 'react'
-import { ArrowUpRight, Heart, ShieldCheck, GraduationCap, CheckCircle } from '@/components/slab'
+import { ArrowUpRight, Heart, ShieldCheck, GraduationCap, CheckCircle, SealCheck } from '@/components/slab'
 import { profile } from '@/data/profile'
 import { useScrollReveal } from '@/hooks/useScrollReveal'
 import '@/styles/home-carole.css'
@@ -332,9 +332,12 @@ export default function Home() {
     <div className="carole-page" id="top">
       <div className="carole-masthead">
         <header className="carole-header">
-          <a className="carole-brand" href="#top" aria-label="Mom of Pru, Carole home">
-            <span className="carole-brand__mark">C</span>
-            <span><b>Mom of Pru</b><small>Carole Momongan</small></span>
+          <a className="carole-brand" href="#top" aria-label="Carole Momongan, Mom of Pru, home">
+            <img className="carole-brand__avatar" src={profile.avatarSrc} alt="" width={40} height={40} />
+            <span className="carole-brand__identity">
+              <b className="carole-brand__name">Carole Momongan <SealCheck size={15} weight="fill" aria-label={profile.verifiedLabel} /></b>
+              <small className="carole-brand__tagline">Mom of Pru</small>
+            </span>
           </a>
           <nav className="carole-nav" aria-label="Main navigation">
             <a href="#top">Home</a>
