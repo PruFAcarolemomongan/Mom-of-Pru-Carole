@@ -23,7 +23,7 @@ export type Stat = { value: string; label: string; Icon: Icon }
 
 export type Profile = {
   name: string
-  /** First name, used in "Hi, I'm ___." on About. */
+  /** First name, used in "Hi, I'm ___" on About. */
   firstName: string
   handle: string
   /** Short role line under the handle on phones. */
@@ -51,7 +51,7 @@ export type Profile = {
 }
 
 export const profile: Profile = {
-  name: 'Carole Momongan',
+  name: 'Carole Cortez Momongan',
   firstName: 'Carole',
   handle: '',
   role: 'Associate Unit Manager',
@@ -65,15 +65,15 @@ export const profile: Profile = {
   location: 'PLACEHOLDER - your city or timezone',
   // Pick any icon from https://phosphoricons.com and import it above.
   stats: [],
-  // The intro types this line, then flies it into the Home headline.
-  // Keep it short: two halves, 5-8 words total.
-  displayName: { line1: 'Carole', line2: 'Momongan' },
+  // Keep the name concise for the intro animation.
+  displayName: { line1: 'Carole Cortez', line2: 'Momongan' },
   hero: {
     body: 'I help families prepare today, protect what matters most, and build a more financially secure future.',
     portraitSrc: '/carole-hero-cutout.png',
-    portraitAlt: 'Carole Momongan, Associate Unit Manager',
+    portraitAlt: 'Carole Cortez Momongan, Associate Unit Manager',
   },
   socials: [
-    { label: 'Carole on Facebook', href: 'https://www.facebook.com/profile.php?id=61577227094531', iconPath: '/icons/facebook.svg' }, { label: 'Carole on LinkedIn', href: 'https://www.linkedin.com/in/carolemomongan/', iconPath: '/icons/linkedin.svg' },
+    { label: 'Carole on Facebook', href: 'https://www.facebook.com/profile.php?id=61577227094531', iconPath: '/icons/facebook.svg' },
+    { label: 'Carole on LinkedIn', href: 'https://www.linkedin.com/in/carolemomongan/', iconPath: '/icons/linkedin.svg' },
   ],
 }
