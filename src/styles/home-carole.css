@@ -466,3 +466,9 @@
   .carole-tools-marquee__logo { width: 120px; height: 34px; }
   .carole-tools-marquee__logo--pruforce { height: 38px; }
 }
+/* Fit the complete planning headline on one line in the web layout. */
+@media (min-width: 900px) {
+  .carole-planning { container-type: inline-size; }
+  .carole-planning .carole-section__head { max-width: none; }
+  .carole-planning #planning-title { font-size: clamp(24px, 5.4cqw, 58px); white-space: nowrap; }
+}
