@@ -401,3 +401,16 @@
 .carole-about__copy h2 { display: flex; align-items: center; gap: .14em; }
 .carole-about__verified { flex: 0 0 auto; width: clamp(19px, 2.2vw, 26px); height: auto; color: #1877f2; }
 @media (max-width: 640px) { .carole-about__copy h2 { gap: 5px; font-size: clamp(24px, 7.5vw, 34px); } .carole-about__verified { width: clamp(18px, 5vw, 23px); } }
+
+
+
+/* Compact travel qualification timeline */
+.carole-travel__cube-scene { display: none !important; }
+.carole-travel__sr-list { position: relative; display: grid; gap: 7px; width: auto; height: auto; padding: 0 0 0 22px; margin: 12px 0 0; overflow: visible; clip: auto; white-space: normal; border: 0; list-style: none; }
+.carole-travel__sr-list::before { position: absolute; top: 12px; bottom: 12px; left: 5px; width: 2px; border-radius: 2px; background: linear-gradient(180deg, #d7193f, #f59aaa); content: ''; }
+.carole-travel__sr-list li { position: relative; display: flex; align-items: center; min-height: 34px; padding: 6px 11px; border: 1px solid rgba(16,33,68,.07); border-radius: 10px; background: #fff; box-shadow: 0 4px 12px rgba(16,33,68,.06); color: var(--ink, #102144); font-size: 13px; font-weight: 700; line-height: 1.25; }
+.carole-travel__sr-list li::before { position: absolute; top: 50%; left: -22px; width: 10px; height: 10px; border: 2px solid #d7193f; border-radius: 50%; background: #fff; content: ''; transform: translateY(-50%); }
+.carole-travel__sr-list li::after { margin-left: auto; padding-left: 8px; color: #a86a78; content: '0' counter(travel-item); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 10px; font-weight: 700; letter-spacing: .08em; }
+.carole-travel__sr-list { counter-reset: travel-item; }
+.carole-travel__sr-list li { counter-increment: travel-item; }
+@media (max-width: 640px) { .carole-travel__sr-list { gap: 6px; padding-left: 20px; } .carole-travel__sr-list li { min-height: 32px; padding: 5px 9px; font-size: 12px; } .carole-travel__sr-list li::before { left: -20px; width: 9px; height: 9px; } .carole-travel__sr-list::before { left: 4px; } }
