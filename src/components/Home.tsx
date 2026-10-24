@@ -70,7 +70,7 @@ const faqs = [
   ['How do I book a time?', 'Use the booking button to view Carole’s available appointment times on Calendly.'],
 ]
 
-const workTools = ['Google Sheets', 'Zoom', 'PRUforce', 'Google Meet', 'Calendly']
+const workTools = ['Google Sheets', 'Zoom', 'PRUforce', 'Google Meet', 'Calendly', 'ChatGPT']
 const travelDestinations = ['Bangkok, Thailand', 'Auckland, New Zealand', 'Bali, Indonesia', 'Fukuoka, Japan', 'Hanoi, Vietnam', 'Istanbul, Turkey', 'Nagano, Japan', 'Tokyo, Japan']
 const appScreens = [
   { name: 'Policy overview', src: '/pru-app-home.png' },
@@ -81,6 +81,12 @@ const appScreens = [
 ]
 
 function WorkToolLogo({ name }: { name: string }) {
+  if (name === 'ChatGPT') return (
+    <svg className="carole-tools-marquee__logo" viewBox="86 264 1150 272" aria-label="ChatGPT" role="img">
+      <image href="/tools-chatgpt.png" width="1280" height="800" />
+    </svg>
+  )
+
   if (name === 'Zoom') return (
     <svg className="carole-tools-marquee__logo carole-tools-marquee__logo--zoom" viewBox="0 0 160 40" aria-label="Zoom" role="img">
       <circle cx="20" cy="20" r="19" fill="#2D8CFF" />
@@ -511,4 +517,3 @@ export default function Home() {
     </div>
   )
 }
-
