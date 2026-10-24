@@ -395,3 +395,9 @@
 .carole-brand__name svg { flex: 0 0 auto; color: #7dd3fc; }
 .carole-brand__tagline { font-weight: 700; font-style: italic; }
 @media (max-width: 640px) { .carole-brand__avatar { width: 31px; height: 31px; flex-basis: 31px; } }
+
+
+/* Blue verification badge beside Carole's adviser profile name */
+.carole-about__copy h2 { display: flex; align-items: center; gap: .14em; }
+.carole-about__verified { flex: 0 0 auto; width: clamp(19px, 2.2vw, 26px); height: auto; color: #1877f2; }
+@media (max-width: 640px) { .carole-about__copy h2 { gap: 5px; font-size: clamp(24px, 7.5vw, 34px); } .carole-about__verified { width: clamp(18px, 5vw, 23px); } }
