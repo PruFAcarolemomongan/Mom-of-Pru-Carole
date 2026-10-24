@@ -346,7 +346,7 @@ export default function Home() {
             <a href="#planning">Planning</a> <a href="#careers">Careers</a>
             <a href="#faq">FAQs</a>
           </nav>
-          <div className="carole-header__actions"><a className="carole-header__cta" href={profile.bookingUrl} onClick={openBooking}>
+          <div className="carole-header__actions"><a className="carole-header__cta" href="tel:+639177173046">
             Contact Carole <ArrowUpRight size={16} weight="bold" aria-hidden="true" />
           </a>
           </div></header>
