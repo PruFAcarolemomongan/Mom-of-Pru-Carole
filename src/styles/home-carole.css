@@ -451,18 +451,6 @@
 }
 
 
-/* Narrow tools marquee with balanced logo spacing */
-.carole-tools-marquee { width: min(92%, 1380px); margin: 22px auto; padding: 16px 0 18px; border: 1px solid rgba(16,33,68,.09); border-radius: 18px; box-shadow: 0 8px 22px rgba(16,33,68,.06); }
-.carole-tools-marquee__label { margin-bottom: 10px; }
-.carole-tools-marquee__viewport { width: 100%; margin-inline: auto; }
-.carole-tools-marquee__group { flex: 0 0 100%; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; width: 100%; min-height: 66px; padding-inline: clamp(18px, 3vw, 42px); }
-.carole-tools-marquee__item { padding-inline: clamp(5px, 1.2vw, 16px); }
-.carole-tools-marquee__logo { width: min(100%, 158px); height: 42px; }
-.carole-tools-marquee__logo--pruforce { height: 46px; }
-@media (max-width: 640px) {
-  .carole-tools-marquee { width: calc(100% - 24px); margin: 16px auto; padding: 13px 0 15px; border-radius: 14px; }
-  .carole-tools-marquee__group { min-height: 52px; padding-inline: 8px; }
-  .carole-tools-marquee__item { padding-inline: 4px; }
-  .carole-tools-marquee__logo { width: 100%; height: 29px; }
-  .carole-tools-marquee__logo--pruforce { height: 34px; }
-}
+/* Keep both duplicated marquee rows matched to the centered viewport */
+.carole-tools-marquee__group { flex-basis: min(92vw, 1380px); width: min(92vw, 1380px); }
+@media (max-width: 640px) { .carole-tools-marquee__group { flex-basis: min(calc(100vw - 24px), 1380px); width: min(calc(100vw - 24px), 1380px); } }
