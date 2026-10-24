@@ -3,6 +3,7 @@ import ThemeGlyph from './ThemeGlyph'
 import { HomeIcon, StackIcon, UserIcon } from './RailIcons'
 import { getTheme, toggleTheme, type Theme } from '@/lib/theme'
 import { profile } from '@/data/profile'
+import { SealCheck } from '@/components/slab'
 
 /**
  * The profile rail: the fixed left column of the shell. It carries identity,
@@ -56,7 +57,7 @@ export default function Rail({ sidebarVisible = true, sidebarPeeking = false, on
         </span>
 
         <h2 className="rail__name">
-          {profile.name}
+          Carole <span style={{ whiteSpace: 'nowrap' }}>Momongan <SealCheck size={24} weight="fill" style={{ color: '#1d9bf0', display: 'inline-block', verticalAlign: '-0.12em' }} role="img" aria-label={profile.verifiedLabel} /></span>
         </h2>
         <p className="rail__handle">{profile.role}</p>
 
