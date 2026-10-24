@@ -454,3 +454,8 @@
 /* Keep both duplicated marquee rows matched to the centered viewport */
 .carole-tools-marquee__group { flex-basis: min(92vw, 1380px); width: min(92vw, 1380px); }
 @media (max-width: 640px) { .carole-tools-marquee__group { flex-basis: min(calc(100vw - 24px), 1380px); width: min(calc(100vw - 24px), 1380px); } }
+
+
+/* Match the marquee track and logo slots to the centered viewport */
+.carole-tools-marquee__track { width: 100%; }
+.carole-tools-marquee__group { flex: 0 0 100%; width: 100%; }
