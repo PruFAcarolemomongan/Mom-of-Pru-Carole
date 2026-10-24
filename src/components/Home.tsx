@@ -419,7 +419,7 @@ export default function Home() {
           <div className="carole-about__image"><img src={profile.aboutPortraitSrc} alt="Carole Momongan with arms crossed" loading="lazy" /></div>
           <div className="carole-about__copy">
             <p className="carole-kicker">Meet your adviser</p>
-            <h2 id="about-title">Carole Momongan</h2>
+            <h2 id="about-title">Carole Momongan <SealCheck className="carole-about__verified" size={25} weight="fill" aria-label={profile.verifiedLabel} role="img" /></h2>
             <p className="carole-about__role">Associate Unit Manager · Pru Life UK</p>
             <section className="carole-timeline" aria-labelledby="carole-timeline-title">
               <h3 className="carole-timeline__heading" id="carole-timeline-title">Achievements and recognitions</h3>
