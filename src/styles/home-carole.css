@@ -451,17 +451,17 @@
 }
 
 
-/* Compact marquee with equal logo slots and a matching loop seam. */
-.carole-tools-marquee { width: calc(100% - 48px); max-width: 960px; margin-inline: auto; padding: 14px 0 16px; border: 1px solid rgba(101,13,34,.07); border-radius: 18px; }
-.carole-tools-marquee__label { margin-bottom: 8px; }
+/* Full-width slim marquee with equal slots and a seamless infinite loop. */
+.carole-tools-marquee { width: 100%; max-width: none; margin-inline: 0; padding: 8px 0; border: 0; border-top: 1px solid rgba(101,13,34,.07); border-bottom: 1px solid rgba(101,13,34,.07); border-radius: 0; container-type: inline-size; }
+.carole-tools-marquee__label { margin-bottom: 4px; }
 .carole-tools-marquee__track { width: max-content; }
-.carole-tools-marquee__group { display: flex; flex: 0 0 auto; width: auto; min-height: 52px; gap: 24px; padding: 0 12px; }
+.carole-tools-marquee__group { display: flex; flex: 0 0 auto; justify-content: space-around; width: max(100cqw, 920px); min-height: 44px; gap: 24px; padding: 0 12px; }
 .carole-tools-marquee__item { flex: 0 0 160px; width: 160px; }
 .carole-tools-marquee__logo { width: 148px; max-width: 100%; height: 40px; }
 .carole-tools-marquee__logo--pruforce { height: 44px; }
 @media (max-width: 640px) {
-  .carole-tools-marquee { width: calc(100% - 24px); padding: 12px 0; border-radius: 14px; }
-  .carole-tools-marquee__group { min-height: 44px; gap: 20px; padding-inline: 10px; }
+  .carole-tools-marquee { width: 100%; padding: 7px 0; border-radius: 0; }
+  .carole-tools-marquee__group { width: max(100cqw, 760px); min-height: 38px; gap: 20px; padding-inline: 10px; }
   .carole-tools-marquee__item { flex-basis: 132px; width: 132px; }
   .carole-tools-marquee__logo { width: 120px; height: 34px; }
   .carole-tools-marquee__logo--pruforce { height: 38px; }
