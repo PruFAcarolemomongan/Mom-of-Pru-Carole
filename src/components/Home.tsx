@@ -333,10 +333,10 @@ export default function Home() {
     <div className="carole-page" id="top">
       <div className="carole-masthead">
         <header className="carole-header">
-          <a className="carole-brand" href="#top" aria-label="Carole Momongan, Mom of Pru, home">
+          <a className="carole-brand" href="#top" aria-label="Carole Cortez Momongan, Mom of Pru, home">
             <img className="carole-brand__avatar" src={profile.avatarSrc} alt="" width={40} height={40} />
             <span className="carole-brand__identity">
-              <b className="carole-brand__name">Carole Momongan <SealCheck size={15} weight="fill" aria-label={profile.verifiedLabel} /></b>
+              <b className="carole-brand__name">Carole Cortez Momongan <SealCheck size={15} weight="fill" aria-label={profile.verifiedLabel} /></b>
               <small className="carole-brand__tagline">Mom of Pru</small>
             </span>
           </a>
@@ -417,10 +417,10 @@ export default function Home() {
         </section>
 
         <section className="carole-about" id="about" aria-labelledby="about-title">
-          <div className="carole-about__image"><img src={profile.aboutPortraitSrc} alt="Carole Momongan with arms crossed" loading="lazy" /></div>
+          <div className="carole-about__image"><img src={profile.aboutPortraitSrc} alt="Carole Cortez Momongan with arms crossed" loading="lazy" /></div>
           <div className="carole-about__copy">
             <p className="carole-kicker">Meet your adviser</p>
-            <h2 id="about-title">Carole Momongan <SealCheck className="carole-about__verified" size={25} weight="fill" aria-label={profile.verifiedLabel} role="img" /></h2>
+            <h2 id="about-title">Carole Cortez Momongan <SealCheck className="carole-about__verified" size={25} weight="fill" aria-label={profile.verifiedLabel} role="img" /></h2>
             <p className="carole-about__role">Associate Unit Manager · Pru Life UK</p>
             <section className="carole-timeline" aria-labelledby="carole-timeline-title">
               <h3 className="carole-timeline__heading" id="carole-timeline-title">Achievements and recognitions</h3>
@@ -503,9 +503,9 @@ export default function Home() {
       <footer className="carole-footer">
         <a className="carole-brand carole-brand--footer" href="#top" aria-label="Mom of Pru, Carole home">
           <span className="carole-brand__mark">C</span>
-          <span><b>Mom of Pru</b><small>Carole Momongan</small></span>
+          <span><b>Mom of Pru</b><small>Carole Cortez Momongan</small></span>
         </a>
-        <span>© {new Date().getFullYear()} Carole Momongan · Associate Unit Manager</span>
+        <span>© {new Date().getFullYear()} Carole Cortez Momongan · Associate Unit Manager</span>
         <a href={profile.bookingUrl} onClick={openBooking}>Book an appointment <ArrowUpRight size={15} aria-hidden="true" /></a>
       </footer>
     </div>
