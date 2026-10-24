@@ -110,7 +110,9 @@ export default function Rail({ sidebarVisible = true, sidebarPeeking = false, on
         <p className="rail__copy">
           &copy; {new Date().getFullYear()}
           <br />
-          {profile.name}. All rights reserved.
+          {profile.name}
+          <br />
+          All rights reserved.
         </p>
       </div>
     </aside>
