@@ -1,4 +1,5 @@
-import { useEffect, useRef } from 'react'
+const timelineRef = useRef<HTMLOListElement>(null)
+  const travelTimelineRef = useRef<HTMLOListElement>(null)[timelineRef.current, travelTimelineRef.current].filter(<ol className="carole-timeline__list carole-travel__list" ref={travelTimelineRef} aria-label="Travel qualifications">{travelDestinations.map((destination, index) => <li className="carole-timeline__item carole-travel__item" style={{ '--timeline-index': index } as CSSProperties} key={destination} tabIndex={0}><span className="carole-travel__label">{destination}</span></li>)}import { useEffect, useRef } from 'react'
 import type { CSSProperties, MouseEvent } from 'react'
 import { ArrowUpRight, Heart, ShieldCheck, GraduationCap, CheckCircle, SealCheck } from '@/components/slab'
 import { profile } from '@/data/profile'
