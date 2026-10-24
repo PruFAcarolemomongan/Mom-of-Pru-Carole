@@ -440,7 +440,7 @@ export default function Home() {
                   ))}
                 </div>
               </div>
-              <ol className="carole-travel__sr-list" aria-label="Travel qualifications">
+              <ol className="" aria-label="Travel qualifications">
                 {travelDestinations.map((destination) => <li key={destination}>{destination}</li>)}
               </ol>
             </section>
@@ -510,3 +510,4 @@ export default function Home() {
     </div>
   )
 }
+
