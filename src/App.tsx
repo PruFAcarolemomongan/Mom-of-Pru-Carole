@@ -3,7 +3,6 @@ import { Outlet, useLocation } from 'react-router-dom'
 import TabBar from '@/components/TabBar'
 
 import Rail from '@/components/Rail'
-import IntroOverlay from '@/components/IntroOverlay'
 import CursorRing from '@/components/CursorRing'
 import CursorSparkles from '@/components/CursorSparkles'
 
@@ -21,7 +20,7 @@ const HeroCanvas = lazy(() => import('@/components/HeroCanvasV2'))
 
 /**
  * The shell. It owns everything that outlives a route change: the contour
- * shader, the intro, the profile rail and the one scrolling panel. Each route
+ * shader, the profile rail and the one scrolling panel. Each route
  * renders its view into that panel through the Outlet.
  *
  * Home is the route that shaped the layout: it is sized to the panel box and
@@ -112,7 +111,7 @@ export default function App() {
   }, [pathname])
 
   // From the first route change on, a page that mounts rises into place
-  // (mobile-pass.css). Not on the first load: the intro owns that arrival.
+  // (mobile-pass.css). The landing page renders directly on the first load.
   // Layout effect: set before paint, or the new page shows for one frame at
   // full opacity and then jumps back to start its rise.
   const firstPath = useRef(pathname)
@@ -120,7 +119,7 @@ export default function App() {
     if (pathname !== firstPath.current) document.documentElement.classList.add('has-navigated')
   }, [pathname])
 
-  // The page measures its own frame health once the intro clears and steps
+  // The page measures its own frame health after rendering and steps
   // the design down if it cannot hold it - see lib/perf.ts. `low` is the tier
   // where the shader itself has to go.
   const [perfTier, setPerfTier] = useState(getPerfTier)
@@ -159,7 +158,6 @@ export default function App() {
 
   return (
     <>
-      <IntroOverlay />
       <CursorRing />
       <CursorSparkles />
       <a href={`#${SCROLLER_ID}`} className="skip-link">Skip to main content</a>
