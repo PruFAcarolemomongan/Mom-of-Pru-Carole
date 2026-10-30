@@ -69,7 +69,7 @@ export const profile: Profile = {
   displayName: { line1: 'Carole Cortez', line2: 'Momongan' },
   hero: {
     body: 'I help families prepare today, protect what matters most, and build a more financially secure future.',
-    portraitSrc: '/carole-hero-cutout.png',
+    portraitSrc: '/carole-hero-burgundy-cutout.png',
     portraitAlt: 'Carole Cortez Momongan, Associate Unit Manager',
   },
   socials: [
