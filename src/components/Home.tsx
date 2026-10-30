@@ -485,11 +485,6 @@ export default function Home() {
           <a className="carole-button carole-button--light" href={profile.bookingUrl} onClick={openBooking}>
             Schedule an appointment <ArrowUpRight size={18} weight="bold" aria-hidden="true" />
           </a>
-          <div className="carole-contact-links" aria-label="Contact Carole">
-            <a href="tel:+639177173046">{profile.phone}</a>
-            <a href={`mailto:${profile.email}`}>{profile.email}</a>
-            {profile.socials.map((social) => <a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer">{social.href.includes('linkedin.com') ? 'LinkedIn profile' : 'Facebook profile'}</a>)}
-          </div>
         </section>
       </main>
 
@@ -512,8 +507,13 @@ export default function Home() {
           <span><b>Mom of Pru</b><small>Carole Cortez Momongan</small></span>
         </a>
         <span>© {new Date().getFullYear()} Carole Cortez Momongan · Associate Unit Manager</span>
-        <a href={profile.bookingUrl} onClick={openBooking}>Book an appointment <ArrowUpRight size={15} aria-hidden="true" /></a>
+<div className="carole-contact-links" aria-label="Contact Carole">
+            <a href="tel:+639177173046">{profile.phone}</a>
+            <a href={`mailto:${profile.email}`}>{profile.email}</a>
+            {profile.socials.map((social) => <a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer">{social.href.includes('linkedin.com') ? 'LinkedIn profile' : 'Facebook profile'}</a>)}
+          </div>
       </footer>
     </div>
   )
 }
+
