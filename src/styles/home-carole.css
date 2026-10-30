@@ -472,3 +472,31 @@
   .carole-planning .carole-section__head { max-width: none; }
   .carole-planning #planning-title { font-size: clamp(24px, 5.4cqw, 58px); white-space: nowrap; }
 }
+
+
+/* Contact details sit together at the bottom of the page. */
+.carole-footer .carole-contact-links {
+  flex: 0 0 100%;
+  width: 100%;
+  min-width: 0;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(14px, 2.5vw, 32px);
+  overflow-x: auto;
+  padding: 12px 0 4px;
+  border-top: 1px solid rgba(15, 35, 65, .12);
+}
+.carole-footer .carole-contact-links a {
+  flex: 0 0 auto;
+  color: var(--carole-red-deep);
+  font-size: 11px;
+  white-space: nowrap;
+  overflow-wrap: normal;
+}
+.carole-footer .carole-contact-links a:hover { color: var(--ink); }
+@media (max-width: 600px) {
+  .carole-footer .carole-contact-links { justify-content: flex-start; }
+}
+
