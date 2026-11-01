@@ -8,14 +8,13 @@ import { SealCheck } from '@/components/slab'
 // One section index and one shared, interruptible highlight.
 export const RAIL_LINKS = [
   { label: 'Home', to: '#top', Icon: HomeIcon },
-  { label: 'Pru Life UK app', to: '#pru-app', Icon: FolderIcon },
   { label: 'Planning topics', to: '#planning', Icon: StackIcon },
+  { label: 'Pru Life UK app', to: '#pru-app', Icon: FolderIcon },
   { label: 'Our conversation', to: '#process', Icon: CupIcon },
   { label: 'Meet your adviser', to: '#about', Icon: UserIcon },
   { label: 'Grow with us', to: '#careers', Icon: StarIcon },
   { label: 'Good to know', to: '#faq', Icon: MessageIcon },
   { label: 'Your next step', to: '#book', Icon: StackIcon },
-  { label: 'Contact Carole', to: '#contact', Icon: MessageIcon },
 ] as const
 
 const sectionNavStyles = `
@@ -244,4 +243,3 @@ export default function Rail({ sidebarVisible = true, sidebarPeeking = false, on
     </aside>
   )
 }
-
