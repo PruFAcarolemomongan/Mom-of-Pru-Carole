@@ -182,7 +182,7 @@ function PruAppFeature() {
   }, [])
 
   return (
-    <section className="carole-app-feature" aria-labelledby="carole-app-title">
+    <section className="carole-app-feature" id="pru-app" aria-labelledby="carole-app-title">
       <div className="carole-app-feature__copy">
         <p className="carole-kicker"><span /> Pru Life UK app</p>
         <h2 id="carole-app-title">Your policy, closer at hand.</h2>
@@ -406,7 +406,7 @@ export default function Home() {
           <p className="carole-disclosure">Any financial product recommendation depends on your needs, eligibility, and the applicable policy terms.</p>
         </section>
 
-        <section className="carole-section carole-process" aria-labelledby="process-title"><svg className="carole-process__ribbon" viewBox="0 0 1440 420" preserveAspectRatio="none" aria-hidden="true"><path d="M-80 315 C180 145 360 410 620 300 S900 185 770 105 S690 35 920 55 S1220 175 1510 -35" /></svg>
+        <section className="carole-section carole-process" id="process" aria-labelledby="process-title"><svg className="carole-process__ribbon" viewBox="0 0 1440 420" preserveAspectRatio="none" aria-hidden="true"><path d="M-80 315 C180 145 360 410 620 300 S900 185 770 105 S690 35 920 55 S1220 175 1510 -35" /></svg>
           <div className="carole-section__head carole-section__head--compact">
             <p className="carole-kicker">A simple place to begin</p>
             <h2 id="process-title">A clear conversation. <em>Your pace.</em></h2>
@@ -501,7 +501,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="carole-footer">
+      <footer className="carole-footer" id="contact">
         <a className="carole-brand carole-brand--footer" href="#top" aria-label="Mom of Pru, Carole home">
           <span className="carole-brand__mark">C</span>
           <span><b>Mom of Pru</b><small>Carole Cortez Momongan</small></span>
@@ -516,4 +516,5 @@ export default function Home() {
     </div>
   )
 }
+
 
