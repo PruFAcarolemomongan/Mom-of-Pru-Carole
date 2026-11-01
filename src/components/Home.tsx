@@ -460,7 +460,7 @@ export default function Home() {
           </div>
         </section>
 
-<section className="carole-careers" id="careers" aria-labelledby="careers-title"><div className="carole-careers__copy"><p className="carole-kicker">Grow with us</p><h2 id="careers-title">Join us and be part of my team.</h2><p>Interested in becoming a financial adviser? Reach out to Carole to learn about the opportunity and next steps.</p></div><a className="carole-button carole-button--light" href={`mailto:${profile.email}?subject=${encodeURIComponent("Joining Carole's team")}`}>Ask Carole about careers <ArrowUpRight size={18} weight="bold" aria-hidden="true" /></a></section> <section className="carole-faq" id="faq" aria-labelledby="faq-title">
+<section className="carole-careers" id="careers" aria-labelledby="careers-title"><div className="carole-careers__copy"><p className="carole-kicker">Grow with us</p><h2 id="careers-title">Join us and be part of my team.</h2><p>Interested in becoming a financial adviser? Reach out to Carole to learn about the opportunity and next steps.</p></div><div className="carole-careers__actions"><a className="carole-button carole-button--light carole-button--resume" href={`mailto:${profile.email}?subject=${encodeURIComponent("Financial Adviser Application")}&body=${encodeURIComponent("Hello Carole,\n\nI would like to apply to join your team. I have attached my resume.")}`}>Email your resume <ArrowUpRight size={18} weight="bold" aria-hidden="true" /></a><a className="carole-button carole-button--light" href={profile.bookingUrl} onClick={openBooking}>Set an appointment <ArrowUpRight size={18} weight="bold" aria-hidden="true" /></a></div></section> <section className="carole-faq" id="faq" aria-labelledby="faq-title">
           <div className="carole-faq__intro">
             <p className="carole-kicker">Good to know</p>
             <h2 id="faq-title">Questions before <em>we talk?</em></h2>
@@ -482,9 +482,12 @@ export default function Home() {
             <h2 id="book-title">Let’s talk about <em>what matters to you.</em></h2>
             <p>Choose an online appointment time that works for you. Carole will be ready to listen and learn about your goals.</p>
           </div>
-          <a className="carole-button carole-button--light" href={profile.bookingUrl} onClick={openBooking}>
-            Schedule an appointment <ArrowUpRight size={18} weight="bold" aria-hidden="true" />
-          </a>
+          <div className="carole-booking__actions">
+            <a className="carole-button carole-button--light" href={profile.bookingUrl} onClick={openBooking}>
+              Schedule an appointment <ArrowUpRight size={18} weight="bold" aria-hidden="true" />
+            </a>
+            <a className="carole-button carole-button--call" href="tel:+639177173046">Call me</a>
+          </div>
         </section>
       </main>
 
@@ -507,14 +510,10 @@ export default function Home() {
           <span><b>Mom of Pru</b><small>Carole Cortez Momongan</small></span>
         </a>
         <span>© {new Date().getFullYear()} Carole Cortez Momongan · Associate Unit Manager</span>
-<div className="carole-contact-links" aria-label="Contact Carole">
-            <a href="tel:+639177173046">{profile.phone}</a>
-            <a href={`mailto:${profile.email}`}>{profile.email}</a>
-            {profile.socials.map((social) => <a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer">{social.href.includes('linkedin.com') ? 'LinkedIn profile' : 'Facebook profile'}</a>)}
-          </div>
       </footer>
     </div>
   )
 }
+
 
 
