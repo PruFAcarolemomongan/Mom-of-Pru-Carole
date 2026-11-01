@@ -74,11 +74,11 @@ export default function Rail({ sidebarVisible = true, sidebarPeeking = false, on
         const section = document.querySelector(to)
         if (section && section.getBoundingClientRect().top <= point) current = to
       }
-      // The short contact footer cannot reach the activation line at page end.
+      // The footer cannot reach the activation line, so keep the final link active.
       const atBottom = scroller && window.innerWidth >= 1100
         ? scroller.scrollTop + scroller.clientHeight >= scroller.scrollHeight - 4
         : window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 4
-      if (atBottom) current = '#contact'
+      if (atBottom) current = '#book'
       setActiveSection(current)
     }
     const schedule = () => { if (!frame) frame = requestAnimationFrame(update) }
