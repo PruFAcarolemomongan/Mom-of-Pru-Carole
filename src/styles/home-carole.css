@@ -616,3 +616,22 @@
   .carole-tools-marquee__logo { width: min(100%, 54px); height: 28px; }
   .carole-tools-marquee__logo--pruforce { height: 32px; }
 }
+
+/* Keep direct contact beside booking and group both careers actions. */
+.carole-booking { grid-template-columns: minmax(0, 1fr) auto; }
+.carole-booking__actions,
+.carole-careers__actions { display: flex; align-items: center; justify-content: flex-end; gap: 12px; flex-wrap: wrap; }
+.carole-button--call { border-color: rgba(255,255,255,.72); background: transparent; color: #fff; box-shadow: none; }
+.carole-button--call:hover { border-color: #fff; background: #fff; color: var(--carole-red-deep); }
+.carole-button--call:focus-visible { outline: 3px solid #ffd0d8; outline-offset: 4px; }
+.carole-careers__actions .carole-button { flex: 0 0 auto; }
+@media (max-width: 900px) {
+  .carole-booking__actions,
+  .carole-careers__actions { grid-column: 1 / -1; justify-content: flex-start; }
+}
+@media (max-width: 640px) {
+  .carole-booking { grid-template-columns: 1fr; }
+  .carole-booking__actions,
+  .carole-careers__actions { grid-column: auto; justify-content: flex-start; }
+}
+
