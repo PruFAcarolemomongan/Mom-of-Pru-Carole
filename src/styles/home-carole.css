@@ -503,3 +503,6 @@
 
 /* Keep the night-mode control visible in Carole’s profile sidebar. */
 .carole-page .rail__theme { display: grid !important; }
+
+/* The sidebar sits beside .carole-page, so target the rail directly. */
+.rail__theme { display: grid !important; }
