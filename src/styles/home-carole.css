@@ -506,3 +506,113 @@
 
 /* The sidebar sits beside .carole-page, so target the rail directly. */
 .rail__theme { display: grid !important; }
+
+
+/* Keep Carole's fixed light sections readable when dark theme is active. */
+:root[data-theme='dark'] .carole-app-feature,
+:root[data-theme='dark'] .carole-about {
+  background: linear-gradient(120deg, #0d1422 0%, #101827 58%, #16131c 100%);
+  color: #edf0f6;
+}
+:root[data-theme='dark'] .carole-app-feature__copy h2,
+:root[data-theme='dark'] .carole-about__copy h2,
+:root[data-theme='dark'] .carole-timeline__heading,
+:root[data-theme='dark'] .carole-travel h3 {
+  color: #f3f5fa;
+}
+:root[data-theme='dark'] .carole-app-feature__copy .carole-kicker,
+:root[data-theme='dark'] .carole-about__copy .carole-kicker {
+  color: #ff9cab;
+}
+:root[data-theme='dark'] .carole-app-feature__copy > p:not(.carole-kicker),
+:root[data-theme='dark'] .carole-about__copy > p:not(.carole-kicker) {
+  color: #c3cad7;
+}
+:root[data-theme='dark'] .carole-about__role,
+:root[data-theme='dark'] .carole-about__copy .carole-text-link {
+  color: #ffb4c1;
+}
+:root[data-theme='dark'] .carole-about__credentials span {
+  border-color: rgba(255, 180, 193, .24);
+  background: #171e2d;
+  color: #ffd0d8;
+}
+:root[data-theme='dark'] .carole-timeline__card,
+:root[data-theme='dark'] .carole-travel__list li {
+  border-color: rgba(255, 255, 255, .1);
+  background: #151d2b;
+  color: #eef1f7;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, .22);
+}
+:root[data-theme='dark'] .carole-timeline__card time,
+:root[data-theme='dark'] .carole-travel__list li::after {
+  color: #e2aab5;
+}
+:root[data-theme='dark'] .carole-timeline__card h4 {
+  color: #f1f3f8;
+}
+:root[data-theme='dark'] .carole-timeline__list::before,
+:root[data-theme='dark'] .carole-travel__list::before {
+  background: rgba(255, 255, 255, .18);
+}
+:root[data-theme='dark'] .carole-travel__list li::before {
+  background: #151d2b;
+}
+:root[data-theme='dark'] .carole-timeline__item:focus-visible {
+  outline-color: #ff7187;
+}
+
+/* Narrow, centered marquee with equal logo slots and a continuous loop. */
+.carole-tools-marquee {
+  width: min(calc(100% - 48px), 1128px);
+  max-width: 1128px;
+  margin-inline: auto;
+  padding: 8px 0;
+  border: 1px solid rgba(101, 13, 34, .12);
+  border-radius: 14px;
+  background: #fff;
+  container-type: inline-size;
+}
+.carole-tools-marquee__label { margin-bottom: 4px; }
+.carole-tools-marquee__group {
+  display: grid;
+  flex: 0 0 100%;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  align-items: center;
+  justify-items: center;
+  width: 100%;
+  min-width: 100%;
+  min-height: 48px;
+  gap: clamp(4px, 1.8vw, 20px);
+  padding: 0 clamp(10px, 2.4vw, 28px);
+  box-sizing: border-box;
+}
+.carole-tools-marquee__item {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  place-items: center;
+}
+.carole-tools-marquee__logo {
+  width: min(100%, 148px);
+  height: 40px;
+  margin-inline: auto;
+}
+.carole-tools-marquee__logo--pruforce { height: 44px; }
+@media (max-width: 640px) {
+  .carole-tools-marquee {
+    width: calc(100% - 28px);
+    padding: 7px 0;
+  }
+  .carole-tools-marquee__group {
+    flex: 0 0 100%;
+    width: 100%;
+    min-width: 100%;
+    min-height: 40px;
+    gap: 3px;
+    padding-inline: 7px;
+  }
+  .carole-tools-marquee__item { flex-basis: auto; width: 100%; }
+  .carole-tools-marquee__logo { width: min(100%, 54px); height: 28px; }
+  .carole-tools-marquee__logo--pruforce { height: 32px; }
+}
