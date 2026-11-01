@@ -500,3 +500,6 @@
   .carole-footer .carole-contact-links { justify-content: flex-start; }
 }
 
+
+/* Keep the night-mode control visible in Carole’s profile sidebar. */
+.carole-page .rail__theme { display: grid !important; }
