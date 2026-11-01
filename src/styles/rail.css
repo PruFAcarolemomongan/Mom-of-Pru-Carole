@@ -370,3 +370,6 @@
   .rail__link { padding-inline: 8px; gap: 12px; }
   .rail__copy { padding-inline: 0; text-align: center; }
 }
+
+  /* Keep the page in its full-width grid track while the rail overlays it. */
+  .shell--sidebar-hidden.shell--sidebar-peeking .shell__panel { grid-column: 2; }
